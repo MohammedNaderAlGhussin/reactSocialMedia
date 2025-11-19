@@ -11,7 +11,7 @@ const Login = () => {
     <main className="linear h-screen flex justify-center items-center">
       <div className="bg-white flex flex-col justify-center container gap-5 mx-auto rounded-xl p-5 md:p-10 w-4/5 sm:w-2/3 md:w-3/5 lg:w-4/10 xl:w-3/9  h-[670px]">
         <div className="flex flex-col items-center justify-center">
-          <div className="linear w-fit text-white px-6 py-2 mb-4 rounded-xl">
+          <div className="linear w-fit text-white px-5 py-3 mb-4 rounded-xl shadow-xl">
             <img src={Logo} alt="" className="w-10 h-10" />
           </div>
           <h1 className="text-main-text text-2xl font-bold">SocailPluse</h1>
