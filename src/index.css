@@ -19,10 +19,10 @@
 }
 @layer components {
   .linear {
-    @apply bg-linear-to-r from-primary to-primary-hv
+    @apply bg-linear-to-r from-primary to-primary-hv;
   }
   .input {
-    @apply bg-main-bg py-2 border-2 border-light-border rounded-lg pl-1 focus:outline-none;
+    @apply bg-main-bg py-2 border-2 border-light-border rounded-lg pl-2 focus:outline-none;
   }
 }
 @layer utilities {
