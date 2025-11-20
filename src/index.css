@@ -32,7 +32,7 @@
     @apply bg-linear-to-r from-primary to-primary-hv;
   }
   .form-container {
-    @apply bg-white flex flex-col justify-center container gap-5 mx-auto rounded-xl p-5 md:p-10 w-4/5 sm:w-2/3 md:w-3/5 lg:w-4/10 xl:w-3/9  h-[670px];
+    @apply bg-white flex flex-col justify-center container gap-5 mx-auto rounded-xl p-5 md:p-10 w-4/5 sm:w-2/3 md:w-3/5 lg:w-4/10 xl:w-3/9;
   }
   .form-title {
     @apply text-main-text text-2xl font-bold;
