@@ -10,6 +10,8 @@ import EmailIcon from "./icons/EmailIcon";
 import UsernameIcon from "./icons/UsernameIcon";
 import PasswordIcon from "./icons/PasswordIcon";
 import ConfirmPasswordIcon from "./icons/ConfirmPasswordIcon";
+import type { ButtonProps } from "./common/Button/Button.types";
+import Button from "./common/Button/Button";
 
 const Register = () => {
   const inputs: InputProps[] = [
@@ -54,7 +56,11 @@ const Register = () => {
       icon: ConfirmPasswordIcon,
     },
   ];
-
+  const button: ButtonProps = {
+    content: "Sign Up",
+    type: "submit",
+  };
+  
   // rendering inputs inside form
   const inputsList = inputs.map((input) => {
     return (
@@ -101,12 +107,10 @@ const Register = () => {
               </span>
             </label>
           </div>
-          <button className="linear py-2 text-white text-lg rounded-lg cursor-pointer">
-            Sign In
-          </button>
+          <Button {...button} />
         </form>
         <div className="px-2">
-          <p className="text-center bg-sec-text w-full h-[1px] relative ">
+          <p className="text-center bg-sec-text w-full h-px relative ">
             <span className="text-sec-text bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-1">
               Or continue with
             </span>
