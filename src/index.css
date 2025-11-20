@@ -24,6 +24,9 @@
   .input {
     @apply bg-main-bg py-2 border-2 border-light-border rounded-lg pl-2 focus:outline-none;
   }
+  .svg {
+    @apply w-5 h-5 mr-1;
+  }
 }
 @layer utilities {
   input:focus::placeholder {
