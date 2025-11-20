@@ -1,4 +1,6 @@
 import Logo from "./../assets/icons/logo.png";
+import Button from "./common/Button/Button";
+import type { ButtonProps } from "./common/Button/Button.types";
 import Input from "./common/Input/Input";
 import type { InputProps } from "./common/Input/Input.types";
 import SocialLogin from "./common/SocialLogin/SocialLogin";
@@ -28,6 +30,11 @@ const Login = () => {
     name: "remember",
     labelText: "Remember me",
     type: "checkbox",
+  };
+
+  const button: ButtonProps = {
+    content: "Sign In",
+    type: "submit",
   };
   const inputsList = inputs.map((input) => {
     return (
@@ -61,9 +68,7 @@ const Login = () => {
               Forgot password?
             </a>
           </div>
-          <button className="linear py-2 text-white text-lg rounded-lg cursor-pointer">
-            Sign In
-          </button>
+          <Button {...button} />
         </form>
         <SocialLogin />
         <div className="flex gap-3 justify-center items-center text-sm md:text-md">
