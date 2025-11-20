@@ -2,7 +2,7 @@ import type { AuthItem } from "./AuthToggleLink.types";
 
 const AuthToggleLink = ({ text, linkHref, linkLabel }: AuthItem) => {
   return (
-    <p className={`text-center text-sm text-sec-text `}>
+    <p className={`text-center text-sm md:text-[16px] text-sec-text `}>
       <span>
         {text}{" "}
         <a href={linkHref} className="text-primary hover:underline">
