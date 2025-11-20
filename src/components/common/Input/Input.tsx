@@ -1,8 +1,14 @@
 import React from "react";
 import type { InputProps } from "./Input.types";
 
-const Input = ({ id, labelText, type, placeholder, icon }: InputProps) => {
-  
+const Input = ({
+  id,
+  labelText,
+  type,
+  placeholder,
+  name,
+  icon,
+}: InputProps) => {
   const renderIcon = () => {
     if (!icon) return null;
 
@@ -16,12 +22,28 @@ const Input = ({ id, labelText, type, placeholder, icon }: InputProps) => {
 
   return (
     <>
-      <label htmlFor={id} className="text-main-text flex items-center">
-        {renderIcon()}
-        {labelText}
-      </label>
-
-      <input type={type} id={id} className="input" placeholder={placeholder} />
+      {type === "checkbox" ? (
+        <>
+          <input type={type} id={id} className="w-5" />
+          <label htmlFor={id} className="text-sec-text ">
+            {labelText}
+          </label>
+        </>
+      ) : (
+        <>
+          <label htmlFor={id} className="text-main-text flex items-center">
+            {renderIcon()}
+            {labelText}
+          </label>
+          <input
+            type={type}
+            id={id}
+            className="input"
+            name={name}
+            placeholder={placeholder}
+          />
+        </>
+      )}
     </>
   );
 };
