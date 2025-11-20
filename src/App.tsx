@@ -1,12 +1,14 @@
-// import Login from "./components/Login";
+// import Login from "./pages/Auth/Login";
+// import Register from "./pages/Auth/Register";
 
-import Register from "./components/Register";
+import Home from "./pages/Home/Home";
 
 function App() {
   return (
     <>
       {/* <Login /> */}
-      <Register />
+      {/* <Register /> */}
+      <Home />
     </>
   );
 }
