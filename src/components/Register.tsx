@@ -14,6 +14,8 @@ import EmailIcon from "./icons/EmailIcon";
 import UsernameIcon from "./icons/UsernameIcon";
 import PasswordIcon from "./icons/PasswordIcon";
 import ConfirmPasswordIcon from "./icons/ConfirmPasswordIcon";
+import type { AuthItem } from "./common/AuthToggleLink/AuthToggleLink.types";
+import AuthToggleLink from "./common/AuthToggleLink/AuthToggleLink";
 
 const Register = () => {
   const inputs: InputProps[] = [
@@ -76,6 +78,11 @@ const Register = () => {
     content: "Sign Up",
     type: "submit",
   };
+  const authLink: AuthItem = {
+    text: "Already have an account?",
+    linkLabel: "Log in",
+    linkHref: "/login",
+  };
 
   // rendering inputs inside form
   const inputsList = inputs.map((input) => {
@@ -88,14 +95,15 @@ const Register = () => {
         <div className="flex flex-col items-center justify-center">
           <Logo />
           <h1 className="form-title">Create an account</h1>
-          <div className="flex items-center gap-1">
+          <AuthToggleLink {...authLink} />
+          {/* <div className="flex items-center gap-1">
             <p className="text-sec-text text-center text-md md:text-lg">
               Already have an account?
             </p>
             <a href="" className="text-primary">
               Log in
             </a>
-          </div>
+          </div> */}
         </div>
         <form className=" flex flex-col gap-4">
           <div className="flex flex-col gap-2">{inputsList}</div>

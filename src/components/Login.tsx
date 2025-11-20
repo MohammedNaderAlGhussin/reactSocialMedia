@@ -3,10 +3,12 @@ import Button from "./common/Button/Button";
 import Logo from "./common/Logo/Logo";
 import Input from "./common/Input/Input";
 import SocialLogin from "./common/SocialLogin/SocialLogin";
+import AuthToggleLink from "./common/AuthToggleLink/AuthToggleLink";
 
 // Importing Types
 import type { ButtonProps } from "./common/Button/Button.types";
 import type { InputProps } from "./common/Input/Input.types";
+import type { AuthItem } from "./common/AuthToggleLink/AuthToggleLink.types";
 
 // Importing Icons
 import EmailIcon from "./icons/EmailIcon";
@@ -42,12 +44,20 @@ const Login = () => {
     content: "Sign In",
     type: "submit",
   };
+
+  const authLink: AuthItem = {
+    text: "Don't have an account?",
+    linkLabel: "Sign up",
+    linkHref: "/signup",
+  };
+
   const inputsList = inputs.map((input) => {
     return <Input key={input.id} {...input} />;
   });
+
   return (
     <main className="linear h-screen flex justify-center items-center">
-      <div className="form-container">
+      <div className="form-container h-[670px]">
         <div className="flex flex-col items-center justify-center">
           <Logo />
           <h1 className="form-title">SocailPluse</h1>
@@ -63,7 +73,7 @@ const Login = () => {
             </div>
             <a
               href=""
-              className="text-primary duration-300 hover:text-primary-hv text-sm md:text-md"
+              className="text-primary duration-300 hover:text-primary-hv text-sm md:text-md hover:underline"
             >
               Forgot password?
             </a>
@@ -71,12 +81,7 @@ const Login = () => {
           <Button {...button} />
         </form>
         <SocialLogin />
-        <div className="flex gap-3 justify-center items-center text-sm md:text-md">
-          <p className="text-sec-text">Don't have an account?</p>
-          <a href="" className="text-primary cursor-pointer">
-            Sign Up
-          </a>
-        </div>
+        <AuthToggleLink {...authLink} />
       </div>
     </main>
   );
