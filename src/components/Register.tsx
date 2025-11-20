@@ -1,8 +1,53 @@
 import Facebook from "./../assets/icons/facebook.png";
 import Gmail from "./../assets/icons/gmail.png";
 import Logo from "./../assets/icons/logo.png";
+import Input from "./common/Input/Input";
+import type { InputProps } from "./common/Input/Input.types";
 
 const Register = () => {
+  const fullName: InputProps = {
+    id: "name",
+    labelText: "Full Name",
+    placeholder: "Enter your full name",
+    type: "text",
+  };
+  const inputs: InputProps[] = [
+    {
+      id: "name",
+      name: "name",
+      labelText: "Full Name",
+      placeholder: "Enter your full name",
+      type: "text",
+    },
+    {
+      id: "email",
+      name: "email",
+      labelText: "Email Address",
+      placeholder: "hello@example.com",
+      type: "text",
+    },
+    {
+      id: "user",
+      name: "user",
+      labelText: "Username",
+      placeholder: "Choose a username",
+      type: "text",
+    },
+    {
+      id: "password",
+      name: "password",
+      labelText: "Password",
+      placeholder: "Enter your Password",
+      type: "password",
+    },
+    {
+      id: "password",
+      name: "password",
+      labelText: "Confirm Password",
+      placeholder: "Confirm your Password",
+      type: "password",
+    },
+  ];
   return (
     <main className="linear h-screen flex justify-center items-center">
       <div className="bg-white flex flex-col justify-center  container gap-5 mx-auto rounded-xl p-5 md:p-10 w-4/5 sm:w-2/3 md:w-3/5 lg:w-4/10 xl:w-3/9  overflow-y-auto">
@@ -24,29 +69,7 @@ const Register = () => {
         </div>
         <form className=" flex flex-col gap-4">
           <div className="flex flex-col gap-1">
-            <label htmlFor="pass" className="text-main-text flex items-center">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 mr-1"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM8.39747 15.5534C8.64413 15.2206 9.11385 15.1508 9.44661 15.3975C10.175 15.9373 11.0541 16.25 12 16.25C12.9459 16.25 13.825 15.9373 14.5534 15.3975C14.8862 15.1508 15.3559 15.2206 15.6025 15.5534C15.8492 15.8862 15.7794 16.3559 15.4466 16.6025C14.4742 17.3233 13.285 17.75 12 17.75C10.715 17.75 9.5258 17.3233 8.55339 16.6025C8.22062 16.3559 8.15082 15.8862 8.39747 15.5534ZM16 10.5C16 11.3284 15.5523 12 15 12C14.4477 12 14 11.3284 14 10.5C14 9.67157 14.4477 9 15 9C15.5523 9 16 9.67157 16 10.5ZM9 12C9.55228 12 10 11.3284 10 10.5C10 9.67157 9.55228 9 9 9C8.44772 9 8 9.67157 8 10.5C8 11.3284 8.44772 12 9 12Z"
-                  fill="#6b7280"
-                />
-              </svg>
-              Full Name
-            </label>
-
-            <input
-              type="text"
-              id="pass"
-              className="input"
-              placeholder="Enter your full name"
-            />
+            <Input {...fullName} />
           </div>
           <div className="flex flex-col gap-1">
             <label htmlFor="email" className="text-main-text ">
@@ -68,7 +91,7 @@ const Register = () => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label htmlFor="pass" className="text-main-text flex items-center">
+            <label htmlFor="user" className="text-main-text flex items-center">
               <svg
                 fill="#6b7280"
                 viewBox="0 0 24 24"
@@ -82,7 +105,7 @@ const Register = () => {
 
             <input
               type="text"
-              id="pass"
+              id="user"
               className="input"
               placeholder="Choose a username"
             />
@@ -115,7 +138,10 @@ const Register = () => {
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label htmlFor="pass" className="text-main-text flex items-center">
+            <label
+              htmlFor="confirm"
+              className="text-main-text flex items-center"
+            >
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -140,7 +166,7 @@ const Register = () => {
 
             <input
               type="text"
-              id="pass"
+              id="confirm"
               className="input"
               placeholder="Confirm your password"
             />
