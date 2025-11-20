@@ -4,13 +4,14 @@ import Logo from "./../assets/icons/logo.png";
 import Input from "./common/Input/Input";
 import type { InputProps } from "./common/Input/Input.types";
 
+// Importing Svg Icons
+import NameIcon from "./icons/NameIcon";
+import EmailIcon from "./icons/EmailIcon";
+import UsernameIcon from "./icons/UsernameIcon";
+import PasswordIcon from "./icons/PasswordIcon";
+import ConfirmPasswordIcon from "./icons/ConfirmPasswordIcon";
+
 const Register = () => {
-  const fullName: InputProps = {
-    id: "name",
-    labelText: "Full Name",
-    placeholder: "Enter your full name",
-    type: "text",
-  };
   const inputs: InputProps[] = [
     {
       id: "name",
@@ -18,6 +19,7 @@ const Register = () => {
       labelText: "Full Name",
       placeholder: "Enter your full name",
       type: "text",
+      icon: NameIcon,
     },
     {
       id: "email",
@@ -25,6 +27,7 @@ const Register = () => {
       labelText: "Email Address",
       placeholder: "hello@example.com",
       type: "text",
+      icon: EmailIcon,
     },
     {
       id: "user",
@@ -32,6 +35,7 @@ const Register = () => {
       labelText: "Username",
       placeholder: "Choose a username",
       type: "text",
+      icon: UsernameIcon,
     },
     {
       id: "password",
@@ -39,6 +43,7 @@ const Register = () => {
       labelText: "Password",
       placeholder: "Enter your Password",
       type: "password",
+      icon: PasswordIcon,
     },
     {
       id: "password",
@@ -46,8 +51,19 @@ const Register = () => {
       labelText: "Confirm Password",
       placeholder: "Confirm your Password",
       type: "password",
+      icon: ConfirmPasswordIcon,
     },
   ];
+
+  // rendering inputs inside form
+  const inputsList = inputs.map((input) => {
+    return (
+      <div className="flex flex-col gap-2">
+        <Input key={input.id} {...input} />
+      </div>
+    );
+  });
+
   return (
     <main className="linear h-screen flex justify-center items-center">
       <div className="bg-white flex flex-col justify-center  container gap-5 mx-auto rounded-xl p-5 md:p-10 w-4/5 sm:w-2/3 md:w-3/5 lg:w-4/10 xl:w-3/9  overflow-y-auto">
@@ -68,109 +84,7 @@ const Register = () => {
           </div>
         </div>
         <form className=" flex flex-col gap-4">
-          <div className="flex flex-col gap-1">
-            <Input {...fullName} />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label htmlFor="email" className="text-main-text ">
-              <svg
-                viewBox="0 0 20 20"
-                className="w-5 h-5 text-sec-text inline mr-2"
-                fill="currentColor"
-              >
-                <path d="M10 11.474L0 2.649V14H20V2.649L10 11.474ZM10.001 8.812L0 0V-1H20V0L10.001 8.812Z" />
-              </svg>
-              Email Address
-            </label>
-
-            <input
-              type="text"
-              id="email"
-              className="input"
-              placeholder="hello@example.com"
-            />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label htmlFor="user" className="text-main-text flex items-center">
-              <svg
-                fill="#6b7280"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-1"
-              >
-                <path d="M12,1a11,11,0,0,0,0,22,1,1,0,0,0,0-2,9,9,0,1,1,9-9v2.857a1.857,1.857,0,0,1-3.714,0V7.714a1,1,0,1,0-2,0v.179A5.234,5.234,0,0,0,12,6.714a5.286,5.286,0,1,0,3.465,9.245A3.847,3.847,0,0,0,23,14.857V12A11.013,11.013,0,0,0,12,1Zm0,14.286A3.286,3.286,0,1,1,15.286,12,3.29,3.29,0,0,1,12,15.286Z" />
-              </svg>
-              Username
-            </label>
-
-            <input
-              type="text"
-              id="user"
-              className="input"
-              placeholder="Choose a username"
-            />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label htmlFor="pass" className="text-main-text flex items-center">
-              <svg
-                viewBox="0 0 48 48"
-                className="w-5 h-5 text-sec-text inline mr-1"
-                fill="currentColor"
-              >
-                <path d="M24,25.28a3.26,3.26,0,0,0-1.64,6.07V36h3.32V31.35a3.28,3.28,0,0,0,1.61-2.8v0A3.27,3.27,0,0,0,24,25.28Z" />
-                <rect
-                  x="7.38"
-                  y="17.77"
-                  width="33.23"
-                  height="25.73"
-                  rx="4.32"
-                />
-                <path d="M13.35,17.77V15.16a10.66,10.66,0,0,1,21.32,0v2.61" />
-              </svg>
-              Password
-            </label>
-
-            <input
-              type="text"
-              id="pass"
-              className="input"
-              placeholder="Enter your password"
-            />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label
-              htmlFor="confirm"
-              className="text-main-text flex items-center"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 mr-1"
-              >
-                <path
-                  d="M3 10.4167C3 7.21907 3 5.62028 3.37752 5.08241C3.75503 4.54454 5.25832 4.02996 8.26491 3.00079L8.83772 2.80472C10.405 2.26824 11.1886 2 12 2C12.8114 2 13.595 2.26824 15.1623 2.80472L15.7351 3.00079C18.7417 4.02996 20.245 4.54454 20.6225 5.08241C21 5.62028 21 7.21907 21 10.4167C21 10.8996 21 11.4234 21 11.9914C21 17.6294 16.761 20.3655 14.1014 21.5273C13.38 21.8424 13.0193 22 12 22C10.9807 22 10.62 21.8424 9.89856 21.5273C7.23896 20.3655 3 17.6294 3 11.9914C3 11.4234 3 10.8996 3 10.4167Z"
-                  stroke="#6b7280"
-                  stroke-width="1.5"
-                />
-                <path
-                  d="M9.5 12.4L10.9286 14L14.5 10"
-                  stroke="#6b7280"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Confirm Password
-            </label>
-
-            <input
-              type="text"
-              id="confirm"
-              className="input"
-              placeholder="Confirm your password"
-            />
-          </div>
+          {inputsList}
           <div className="flex flex-row items-center gap-1">
             <input type="checkbox" id="remeber-me" className="" />
             <label
