@@ -1,6 +1,6 @@
 export interface InputProps {
   id: string;
-  labelText: string;
+  labelText: string | React.ReactElement;
   type: string;
   name: string;
   value?: string;
