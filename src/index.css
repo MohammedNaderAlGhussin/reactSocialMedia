@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/*  
+      sm: @media (min-width: 640px)
+      md: @media (min-width: 768px)
+      lg: @media (min-width: 1024px)
+      xl: @media (min-width: 1280px)
+      2xl: @media (min-width: 1536px) 
+*/
+
 @theme {
   /* Primary Colors */
   --color-primary: #6366f1; /* Main action buttons, active navigation items, links, */
@@ -17,8 +25,10 @@
   --color-nav-icon: #9ca3af; /* Inactive icons in navigation */
   --color-btn-hv: #4f46e5; /* Button hover states */
 }
+
 @layer components {
-  .linear {
+  .linear,
+  .linear-primary {
     @apply bg-linear-to-r from-primary to-primary-hv;
   }
   .input {
