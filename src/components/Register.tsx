@@ -1,8 +1,12 @@
-import Facebook from "./../assets/icons/facebook.png";
-import Gmail from "./../assets/icons/gmail.png";
-import Logo from "./../assets/icons/logo.png";
+// Importign components
 import Input from "./common/Input/Input";
+import Logo from "./common/Logo/Logo";
+import Button from "./common/Button/Button";
+import SocialLogin from "./common/SocialLogin/SocialLogin";
+
+// Importign types
 import type { InputProps } from "./common/Input/Input.types";
+import type { ButtonProps } from "./common/Button/Button.types";
 
 // Importing Svg Icons
 import NameIcon from "./icons/NameIcon";
@@ -10,8 +14,6 @@ import EmailIcon from "./icons/EmailIcon";
 import UsernameIcon from "./icons/UsernameIcon";
 import PasswordIcon from "./icons/PasswordIcon";
 import ConfirmPasswordIcon from "./icons/ConfirmPasswordIcon";
-import type { ButtonProps } from "./common/Button/Button.types";
-import Button from "./common/Button/Button";
 
 const Register = () => {
   const inputs: InputProps[] = [
@@ -48,38 +50,44 @@ const Register = () => {
       icon: PasswordIcon,
     },
     {
-      id: "password",
-      name: "password",
+      id: "confrim-password",
+      name: "confrim-password",
       labelText: "Confirm Password",
       placeholder: "Confirm your Password",
       type: "password",
       icon: ConfirmPasswordIcon,
     },
   ];
+
+  const termsAndPolicy = (
+    <span>
+      I agree to the{" "}
+      <span className="text-primary cursor-pointer">Terms and Services </span>{" "}
+      and <span className="text-primary cursor-pointer">Privacy Policy</span>
+    </span>
+  );
+  const checkbox: InputProps = {
+    id: "terms-policy",
+    name: "terms-policy",
+    type: "checkbox",
+    labelText: termsAndPolicy,
+  };
   const button: ButtonProps = {
     content: "Sign Up",
     type: "submit",
   };
-  
+
   // rendering inputs inside form
   const inputsList = inputs.map((input) => {
-    return (
-      <div className="flex flex-col gap-2">
-        <Input key={input.id} {...input} />
-      </div>
-    );
+    return <Input key={input.id} {...input} />;
   });
 
   return (
     <main className="linear h-screen flex justify-center items-center">
-      <div className="bg-white flex flex-col justify-center  container gap-5 mx-auto rounded-xl p-5 md:p-10 w-4/5 sm:w-2/3 md:w-3/5 lg:w-4/10 xl:w-3/9  overflow-y-auto">
+      <div className="form-container">
         <div className="flex flex-col items-center justify-center">
-          <div className="linear w-fit text-white px-5 py-3 mb-4 rounded-xl shadow-xl">
-            <img src={Logo} alt="" className="w-10 h-10" />
-          </div>
-          <h1 className="text-main-text text-2xl font-bold mb-2">
-            Create an account
-          </h1>
+          <Logo />
+          <h1 className="form-title">Create an account</h1>
           <div className="flex items-center gap-1">
             <p className="text-sec-text text-center text-md md:text-lg">
               Already have an account?
@@ -90,41 +98,14 @@ const Register = () => {
           </div>
         </div>
         <form className=" flex flex-col gap-4">
-          {inputsList}
+          <div className="flex flex-col gap-2">{inputsList}</div>
           <div className="flex flex-row items-center gap-1">
-            <input type="checkbox" id="remeber-me" className="" />
-            <label
-              htmlFor="remeber-me"
-              className="text-sec-text text-sm md:text-md "
-            >
-              I agree to the{" "}
-              <span className="text-primary cursor-pointer">
-                Terms and Services{" "}
-              </span>{" "}
-              and{" "}
-              <span className="text-primary cursor-pointer">
-                Privacy Policy
-              </span>
-            </label>
+            <Input {...checkbox} />
           </div>
           <Button {...button} />
         </form>
         <div className="px-2">
-          <p className="text-center bg-sec-text w-full h-px relative ">
-            <span className="text-sec-text bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-1">
-              Or continue with
-            </span>
-          </p>
-        </div>
-        <div className="flex flex-row justify-between items-center gap-2">
-          <div className="border-2 border-light-border flex flex-row justify-center items-center  py-3  w-1/2 rounded-2xl gap-3 cursor-pointer">
-            <img src={Gmail} alt="" className="w-5 h-5" />
-            <p>Google</p>
-          </div>
-          <div className="border-2 border-light-border flex flex-row justify-center items-center  py-3  w-1/2 rounded-2xl gap-3 cursor-pointer">
-            <img src={Facebook} alt="" className="w-5 h-5" />
-            <p>Facebook</p>
-          </div>
+          <SocialLogin />
         </div>
       </div>
     </main>
