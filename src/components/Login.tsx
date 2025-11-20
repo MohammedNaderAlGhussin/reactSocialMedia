@@ -23,6 +23,12 @@ const Login = () => {
       icon: PasswordIcon,
     },
   ];
+  const checkbox: InputProps = {
+    id: "remember",
+    name: "remember",
+    labelText: "Remember me",
+    type: "checkbox",
+  };
   const inputsList = inputs.map((input) => {
     return (
       <div className="flex flex-col gap-2">
@@ -46,13 +52,7 @@ const Login = () => {
           {inputsList}
           <div className="flex justify-between items-center">
             <div>
-              <input type="checkbox" id="remeber-me" className="w-5" />
-              <label
-                htmlFor="remeber-me"
-                className="text-sec-text text-sm md:text-md"
-              >
-                Remeber me
-              </label>
+              <Input {...checkbox} />
             </div>
             <a
               href=""
