@@ -48,7 +48,7 @@ const Login = () => {
   const authLink: AuthItem = {
     text: "Don't have an account?",
     linkLabel: "Sign up",
-    linkHref: "/signup",
+    linkHref: "/register",
   };
 
   const inputsList = inputs.map((input) => {
