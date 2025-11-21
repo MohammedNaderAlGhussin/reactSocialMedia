@@ -2,6 +2,7 @@
 // import Register from "./pages/Auth/Register";
 
 import Home from "./pages/Home/Home";
+// import Profile from "./pages/Profile/Profile";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       {/* <Login /> */}
       {/* <Register /> */}
       <Home />
+      {/* <Profile /> */}
     </>
   );
 }
