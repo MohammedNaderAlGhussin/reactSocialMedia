@@ -1,35 +1,10 @@
-import BurgerMenu from "../../components/common/BurgerMenu/BurgerMenu";
-import Logo from "../../components/common/Logo/Logo";
+import Header from "../../components/layout/Header/Header";
 
 const Home = () => {
   return (
     <div className="min-h-screen bg-main-bg relative">
-      {/* overLay */}
-      {/* <div className=" absolute top-0 left-0 w-full h-full bg-black/40"></div> */}
-      <header className="flex flex-row items-center justify-between px-5 bg-white lg:px-10 xl:px-15 fixed w-full top-0 left-0 min-h-[75px] shadow-md z-10">
-        <Logo />
-        <BurgerMenu />
+      <Header />
 
-        <nav>
-          <ul className="flex gap-3">
-            <li>
-              <a href="" className="nav-link active">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="" className="nav-link">
-                Profile
-              </a>
-            </li>
-            <li>
-              <a href="" className="nav-link">
-                Logout
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
       <div className="container mx-auto py-5 px-3  xl:px-5 flex flex-row gap-5 mt-20">
         {/* Left */}
         <div className=" hidden md:block xl:w-1/5 xl:pr-4 w-30 h-fit shadow-lg p-3 bg-white rounded-xl sticky top-20 ">
