@@ -1,10 +1,62 @@
+// import { useState } from "react";
 import Logo from "../../components/common/Logo/Logo";
 
 const Home = () => {
+  // const [show, setShow] = useState(false);
+  // const toggleMenu = () => {
+  //   setShow(!show);
+  // };
   return (
-    <div className="min-h-screen bg-main-bg">
-      <header className="flex flex-row items-center justify-between px-5 bg-white lg:px-10 xl:px-15 sticky top-0">
+    <div className="min-h-screen bg-main-bg relative">
+      {/* overLay */}
+      {/* <div className=" absolute top-0 left-0 w-full h-full bg-black/40"></div> */}
+      <header className="flex flex-row items-center justify-between px-5 bg-white lg:px-10 xl:px-15 fixed w-full top-0 left-0 min-h-[75px] shadow-md z-10">
         <Logo />
+        {/* <div className="relative">
+          <button
+            type="button"
+            onClick={toggleMenu}
+            className="items-center justify-center rounded-md p-2 text-gray-500 hover:bg-main-bg  focus:outline-2 focus:-outline-offset-1 focus:outline-primary cursor-pointer"
+          >
+            {show == true ? (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                data-slot="icon"
+                aria-hidden="true"
+                className="w-6 h-6"
+              >
+                <path d="M6 18 18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                data-slot="icon"
+                aria-hidden="true"
+                className="w-6 h-6"
+              >
+                <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            )}
+          </button>
+          {show && (
+            <div className=" px-2 py-3 absolute top-15 -right-2 w-50 text-center z-50 bg-white shadow-lg">
+              <a href="#" className="burger-menu-link">
+                Home
+              </a>
+              <a href="#" className="burger-menu-link">
+                Profile
+              </a>
+              <a href="#" className="burger-menu-link">
+                Logout
+              </a>
+            </div>
+          )}
+        </div> */}
+
         <nav>
           <ul className="flex gap-3">
             <li>
@@ -25,7 +77,7 @@ const Home = () => {
           </ul>
         </nav>
       </header>
-      <div className="container mx-auto py-5 px-3  xl:px-5 flex flex-row gap-5">
+      <div className="container mx-auto py-5 px-3  xl:px-5 flex flex-row gap-5 mt-20">
         {/* Left */}
         <div className=" hidden md:block xl:w-1/5 xl:pr-4 w-30 h-fit shadow-lg p-3 bg-white rounded-xl sticky top-20 ">
           <h1 className="font-bold text-lg xl:pl-1 text-center xl:text-start">
@@ -88,7 +140,103 @@ const Home = () => {
           </div>
           {/*== Post Box ==*/}
           {/* Posts */}
-          <div className="">
+          <div className="pb-5">
+            <div className="bg-white mb-5 rounded-xl cursor-pointer pb-4">
+              <div className="flex items-center p-4 pb-0">
+                <img
+                  src="https://easykey.uk/images/vgift/barry-avatar-400.png"
+                  alt=""
+                  className="w-9 h-9 rounded-full"
+                />
+                <p className="flex itmes-center flex-1 flex-wrap shrink-0  text-gray-800 font-medium ml-2">
+                  Nader Al Ghussin
+                  <span className="block text-sm leading-6 text-gray-400 sm:ml-0 md:ml-1">
+                    @Nader Al Ghussin . Nov 11
+                  </span>
+                </p>
+              </div>
+              <div className="pl-8 xl:pl-16 pr-4 pt-2">
+                <p className="w-auto font-medium text-gray-800 ">
+                  Any fool can write code that a computer can understand. Good
+                  programmers write code that humans can understand.
+                  <br />
+                  <br />
+                  Experience is the name everyone gives to their
+                  <a href="#" className="text-blue-400">
+                    #mistakes
+                  </a>
+                  <br />
+                  <br />
+                  Simplicity is the soul of efficiency.
+                </p>
+                <img
+                  className="rounded-2xl border border-gray-600 my-3 mr-2 w-full"
+                  src="https://images.nature.com/original/magazine-assets/d41586-019-00653-5/d41586-019-00653-5_16459150.jpg"
+                  alt=""
+                />
+                <div className="flex justify-around items-center">
+                  <div className="flex items-center text-xs text-gray-400 hover:text-blue-400 ">
+                    likes 12.3 k
+                  </div>
+
+                  <div className="flex items-center  text-xs text-gray-400 hover:text-red-600">
+                    comments 14 k
+                  </div>
+                  <div className="flex items-center  text-xs text-gray-400 hover:text-blue-400">
+                    share
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white mb-5 rounded-xl cursor-pointer pb-4">
+              <div className="flex items-center p-4 pb-0">
+                <img
+                  src="https://easykey.uk/images/vgift/barry-avatar-400.png"
+                  alt=""
+                  className="w-9 h-9 rounded-full"
+                />
+                <p className="flex itmes-center flex-1 flex-wrap shrink-0  text-gray-800 font-medium ml-2">
+                  Nader Al Ghussin
+                  <span className="block text-sm leading-6 text-gray-400 sm:ml-0 md:ml-1">
+                    @Nader Al Ghussin . Nov 11
+                  </span>
+                </p>
+              </div>
+              <div className="pl-8 xl:pl-16 pr-4 pt-2">
+                <p className="w-auto font-medium text-gray-800 ">
+                  Any fool can write code that a computer can understand. Good
+                  programmers write code that humans can understand.
+                  <br />
+                  <br />
+                  Experience is the name everyone gives to their
+                  <a href="#" className="text-blue-400">
+                    #mistakes
+                  </a>
+                  <br />
+                  <br />
+                  Simplicity is the soul of efficiency.
+                </p>
+                <img
+                  className="rounded-2xl border border-gray-600 my-3 mr-2 w-full"
+                  src="https://images.nature.com/original/magazine-assets/d41586-019-00653-5/d41586-019-00653-5_16459150.jpg"
+                  alt=""
+                />
+                <div className="flex justify-around items-center">
+                  <div className="flex items-center text-xs text-gray-400 hover:text-blue-400 ">
+                    likes 12.3 k
+                  </div>
+
+                  <div className="flex items-center  text-xs text-gray-400 hover:text-red-600">
+                    comments 14 k
+                  </div>
+                  <div className="flex items-center  text-xs text-gray-400 hover:text-blue-400">
+                    share
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="bg-white mb-5 rounded-xl cursor-pointer pb-4">
               <div className="flex items-center p-4 pb-0">
                 <img
@@ -190,7 +338,7 @@ const Home = () => {
         {/*== Middle ==*/}
 
         {/* Right */}
-        <div className="p-3 xl:pr-4 bg-white rounded-xl hidden w-[30%] xl:block h-fit shadow-lg sticky top-20">
+        <div className="p-3 xl:pr-4 bg-white rounded-xl hidden w-[30%] xl:block h-fit shadow-lg  ">
           <h1 className="font-bold text-lg pl-1">Suggestions</h1>
           <ul className="flex flex-col gap-2 px-4 mt-4">
             <li className="menu-link">
