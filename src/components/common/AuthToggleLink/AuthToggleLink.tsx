@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { AuthItem } from "./AuthToggleLink.types";
 
 const AuthToggleLink = ({ text, linkHref, linkLabel }: AuthItem) => {
@@ -5,9 +6,9 @@ const AuthToggleLink = ({ text, linkHref, linkLabel }: AuthItem) => {
     <p className={`text-center text-sm md:text-[16px] text-sec-text `}>
       <span>
         {text}{" "}
-        <a href={linkHref} className="text-primary hover:underline">
+        <Link to={linkHref} className="text-primary hover:underline">
           {linkLabel}
-        </a>
+        </Link>
       </span>
     </p>
   );
