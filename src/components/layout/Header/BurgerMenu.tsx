@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const BurgerMenu = () => {
   const [show, setShow] = useState(false);
@@ -39,15 +40,15 @@ const BurgerMenu = () => {
         </button>
         {show && (
           <div className=" px-2 py-3 absolute top-15 -right-2 w-50 text-center z-50 bg-white shadow-lg">
-            <a href="#" className="burger-menu-link">
+            <Link to={"/home"} className="burger-menu-link">
               Home
-            </a>
-            <a href="#" className="burger-menu-link">
+            </Link>
+            <Link to={"/profile"} className="burger-menu-link">
               Profile
-            </a>
-            <a href="#" className="burger-menu-link">
+            </Link>
+            <Link to={"/"} className="burger-menu-link">
               Logout
-            </a>
+            </Link>
           </div>
         )}
       </div>
