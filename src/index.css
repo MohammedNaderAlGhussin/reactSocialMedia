@@ -14,7 +14,7 @@
   --color-primary-hv: #8b5cf6; /* Hover states */
 
   /* Background Colors */
-  --color-main-bg: #f9fafb; /* Main page background on all pages */
+  --color-main-bg: #f0f2f5; /* Main page background on all pages */
 
   /* Text Colors */
   --color-main-text: #111827; /* Primary text (usernames, post content, main labels) */
@@ -43,6 +43,15 @@
   .svg {
     @apply w-5 h-5 mr-1;
   }
+  .active {
+    @apply border-b-2 border-primary text-primary;
+  }
+  .nav-link {
+    @apply duration-300 transition-all text-lg hover:border-b-2   hover:text-primary  flex items-center justify-center px-5 h-[72px] text-[18px];
+  }
+  .menu-link {
+    @apply text-main-text hover:bg-main-bg duration-300 transition-all  gap-3 py-2 px-8 xl:px-4 rounded-lg cursor-pointer flex items-center xl:justify-start justify-center;
+  }
 }
 @layer utilities {
   input:focus::placeholder {
@@ -61,5 +70,5 @@ body {
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  /* background-color: #4f46e5; */
+  background-color: #f0f2f5;
 }
