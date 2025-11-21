@@ -52,9 +52,14 @@
   .menu-link {
     @apply text-main-text hover:bg-main-bg duration-300 transition-all  gap-3 py-2 px-8 xl:px-4 rounded-lg cursor-pointer flex items-center xl:justify-start justify-center;
   }
+
+  .burger-menu-link {
+    @apply block rounded-md  px-3 py-2 mb-2 text-base font-medium text-sec-text hover:bg-primary-hv hover:text-white focus:bg-primary focus:text-white duration-300;
+  }
 }
 @layer utilities {
-  input:focus::placeholder {
+  input:focus::placeholder,
+  textarea:focus::placeholder {
     opacity: 0;
     transition: 0.4s;
   }
