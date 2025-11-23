@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Post } from "../../config/types/post.types";
 import { PostService } from "../../config/services/post.service";
+import Loader from "../common/Loader/Loader";
 
 const PostsList = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -72,7 +73,7 @@ const PostsList = () => {
   });
   return (
     <div className="pb-5">
-      {loading && <p>Loading...</p>}
+      {loading && <Loader />}
       {!loading && postList}
     </div>
   );
