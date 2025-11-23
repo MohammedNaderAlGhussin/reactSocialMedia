@@ -1,6 +1,6 @@
 const Loader = () => {
   return (
-    <section className="flex items-center justify-center w-full h-full">
+    <section className="flex items-center justify-center w-full h-full mt-5">
       <div className="loader-bullet [animation-delay:-0.3s]"></div>
       <div className="loader-bullet  [animation-delay:-0.1s]"></div>
       <div className="loader-bullet  [animation-delay:0.1s]"></div>
