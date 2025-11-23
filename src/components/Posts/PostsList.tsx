@@ -1,29 +1,16 @@
-import { useEffect, useState } from "react";
-import type { Post } from "../../config/types/post.types";
-import { PostService } from "../../config/services/post.service";
+import { useEffect } from "react";
 import Loader from "../common/Loader/Loader";
 import PostCard from "./PostCard";
+import { useAppDispatch, usePostsSelector } from "../../app/hooks";
+import { fetchPosts } from "../../features/posts/postsSlice";
 
 const PostsList = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  console.log(posts);
+  const { loading, posts } = usePostsSelector();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const loadPosts = async () => {
-      try {
-        const data = await PostService.getPosts();
-        setPosts(data);
-      } catch (err) {
-        console.error("Failed to load posts:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadPosts();
-  }, []);
+    dispatch(fetchPosts());
+  }, [dispatch]);
   const postList = posts.map((post) => <PostCard key={post.id} {...post} />);
 
   return (
