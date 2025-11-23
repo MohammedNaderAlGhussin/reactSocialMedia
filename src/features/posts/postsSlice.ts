@@ -11,9 +11,8 @@ export const fetchPosts = createAsyncThunk(
       return res;
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
-        console.log(err);
         return thunkAPI.rejectWithValue(
-          `${err.message}: ${err.response?.data?.message}`
+          `${err?.message}: ${err.response?.data?.message}`
         );
       }
 
