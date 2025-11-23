@@ -24,7 +24,7 @@ const Input = ({
     <>
       {type === "checkbox" ? (
         <>
-          <input type={type} id={id} className="w-[15px] sm:w-5" />
+          <input type={type} id={id} name={name} className="w-[15px] sm:w-5" />
           <label
             htmlFor={id}
             className="text-sec-text text-[12px] md:text-[13px]"
