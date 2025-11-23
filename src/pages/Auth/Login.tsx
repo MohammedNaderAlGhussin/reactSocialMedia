@@ -11,18 +11,18 @@ import type { InputProps } from "../../components/common/Input/Input.types";
 import type { AuthItem } from "../../components/common/AuthToggleLink/AuthToggleLink.types";
 
 // Importing Icons
-import EmailIcon from "../../components/icons/EmailIcon";
 import PasswordIcon from "../../components/icons/PasswordIcon";
+import UsernameIcon from "../../components/icons/UsernameIcon";
 
 const Login = () => {
   const inputs: InputProps[] = [
     {
-      id: "email",
-      name: "email",
-      labelText: "Email Address",
-      placeholder: "hello@example.com",
+      id: "username",
+      name: "username",
+      labelText: "Username",
+      placeholder: "Enter your Username",
       type: "text",
-      icon: EmailIcon,
+      icon: UsernameIcon,
     },
     {
       id: "password",
