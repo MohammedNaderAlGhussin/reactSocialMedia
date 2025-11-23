@@ -11,12 +11,13 @@ export const fetchPosts = createAsyncThunk(
       return res;
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
+        console.log(err);
         return thunkAPI.rejectWithValue(
-          err.response?.data?.message || "Server error"
+          `${err.message}: ${err.response?.data?.message}`
         );
       }
 
-      return thunkAPI.rejectWithValue("Something went wrong");
+      return thunkAPI.rejectWithValue("Error: Something went wrong");
     }
   }
 );
