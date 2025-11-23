@@ -2,7 +2,7 @@ export interface Author {
   id: number;
   username: string;
   name: string;
-  profile_image: string | null;
+  profile_image: string | undefined;
 }
 
 export interface Post {
@@ -12,4 +12,5 @@ export interface Post {
   image: string | null;
   author: Author;
   created_at: string;
+  comments_count: number;
 }
