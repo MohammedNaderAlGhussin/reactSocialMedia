@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { PostService } from "../../config/services/post.service";
 import axios from "axios";
+import type { CreatePostPayload } from "../../config/types/post.types";
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
@@ -22,9 +23,9 @@ export const fetchPosts = createAsyncThunk(
 
 export const createPost = createAsyncThunk(
   "posts/createPost",
-  async (body: string, thunkAPI) => {
+  async (payload: CreatePostPayload, thunkAPI) => {
     try {
-      const res = await PostService.createPost(body);
+      const res = await PostService.createPost(payload);
       return res;
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
