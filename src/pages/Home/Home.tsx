@@ -20,6 +20,8 @@ const Home = () => {
     }
   };
   const addPost = async () => {
+    if (!post.trim() && !image) return;
+
     console.log(post);
     const result = await dispatch(
       createPost({ body: post, imgageFile: image })
@@ -94,27 +96,24 @@ const Home = () => {
                 className="hidden"
               />
 
-              <label
-                htmlFor="post-image"
-                className="text-primary rounded-full p-2 cursor-pointer"
-              >
+              <label htmlFor="post-image" className=" p-2 cursor-pointer">
                 📷
               </label>
 
-              <a href="" className="text-primary rounded-full p-2">
-                face
+              <a href="" className="p-2">
+                😎
               </a>
               <button
                 onClick={addPost}
                 disabled={loading}
-                className={`bg-primary text-white duration-300 font-bold cursor-pointer flex items-center justify-center rounded-full px-5 py-2 ml-auto mr-1 
+                className={`bg-primary text-white duration-300 font-bold cursor-pointer flex items-center justify-center rounded-xl px-5 py-2 ml-auto mr-1 
                   ${
                     loading
                       ? "opacity-50 cursor-not-allowed"
                       : "hover:bg-primary-hv"
                   }`}
               >
-                {loading ? "Posting..." : "Post"}
+                Post
               </button>
             </div>
             {/* Preview if an image is selected */}
