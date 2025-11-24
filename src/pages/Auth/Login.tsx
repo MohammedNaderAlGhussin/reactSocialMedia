@@ -13,16 +13,48 @@ import type { AuthItem } from "../../components/common/AuthToggleLink/AuthToggle
 // Importing Icons
 import PasswordIcon from "../../components/icons/PasswordIcon";
 import UsernameIcon from "../../components/icons/UsernameIcon";
+import { useAppDispatch, useAuthSelector } from "../../app/hooks";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { loginThunk } from "../../features/auth/authThunk";
+import ErrorMsg from "../../components/common/Error/ErrorMsg";
 
 const Login = () => {
+  const dispatch = useAppDispatch();
+  const { loading, error } = useAuthSelector();
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const res = await dispatch(loginThunk(formData));
+
+    console.log(res);
+    if (res.meta.requestStatus === "fulfilled") {
+      console.log("LOGIN SUCCESS — redirect here");
+      navigate("/home");
+    }
+  };
+
   const inputs: InputProps[] = [
     {
       id: "username",
+      type: "text",
       name: "username",
       labelText: "Username",
       placeholder: "Enter your Username",
-      type: "text",
       icon: UsernameIcon,
+      value: formData.username,
+      onChange: handleChange,
     },
     {
       id: "password",
@@ -31,6 +63,8 @@ const Login = () => {
       placeholder: "Enter your Password",
       type: "password",
       icon: PasswordIcon,
+      value: formData.password,
+      onChange: handleChange,
     },
   ];
   const checkbox: InputProps = {
@@ -41,8 +75,9 @@ const Login = () => {
   };
 
   const button: ButtonProps = {
-    content: "Sign In",
+    content: loading ? "Signing in..." : "Sign In",
     type: "submit",
+    disabled: loading,
   };
 
   const authLink: AuthItem = {
@@ -65,7 +100,7 @@ const Login = () => {
             Welcome back, please login to your account
           </p>
         </div>
-        <form className=" flex flex-col gap-4">
+        <form className=" flex flex-col gap-4" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-2">{inputsList}</div>
           <div className="flex justify-between items-center">
             <div>
@@ -78,6 +113,8 @@ const Login = () => {
               Forgot password?
             </a>
           </div>
+          {error && <ErrorMsg message={error} />}
+
           <Button {...button} />
         </form>
         <SocialLogin />
