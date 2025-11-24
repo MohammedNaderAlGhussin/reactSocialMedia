@@ -1,6 +1,7 @@
 import { useAppDispatch, useAuthSelector } from "../../app/hooks";
 import { useState } from "react";
 import { registerThunk } from "../../features/auth/authThunk";
+import { useNavigate } from "react-router-dom";
 
 // Importign components
 import Input from "../../components/common/Input/Input";
@@ -21,7 +22,6 @@ import EmailIcon from "../../components/icons/EmailIcon";
 import UsernameIcon from "../../components/icons/UsernameIcon";
 import PasswordIcon from "../../components/icons/PasswordIcon";
 import ConfirmPasswordIcon from "../../components/icons/ConfirmPasswordIcon";
-import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -34,6 +34,7 @@ const Register = () => {
     username: "",
     password: "",
     confirmPassword: "",
+    terms: false,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +46,13 @@ const Register = () => {
     e.preventDefault();
 
     if (form.password !== form.confirmPassword) {
+      alert("Passwords do not match");
       return <ErrorMsg message="Passwords do not match" />;
+    }
+
+    if (!form.terms) {
+      alert("You must accept the Terms & Policy");
+      return <ErrorMsg message="You must agree to the terms and services" />;
     }
 
     const res = await dispatch(
@@ -57,7 +64,7 @@ const Register = () => {
       })
     );
     if (res.meta.requestStatus === "fulfilled") {
-      console.log("REGISTER SUCCESS — redirect here");
+      console.log("REGISTER SUCCESS __");
       navigate("/home");
     }
   };
@@ -122,13 +129,15 @@ const Register = () => {
     </span>
   );
   const checkbox: InputProps = {
-    id: "terms-policy",
-    name: "terms-policy",
+    id: "terms",
+    name: "terms",
     type: "checkbox",
     labelText: termsAndPolicy,
+    checked: form.terms,
+    onChange: handleChange,
   };
   const button: ButtonProps = {
-    content: "Sign Up",
+    content: loading ? "Signing up..." : "Sign Up",
     disabled: loading,
     type: "submit",
   };
