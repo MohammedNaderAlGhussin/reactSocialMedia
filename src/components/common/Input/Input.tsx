@@ -8,14 +8,13 @@ const Input = ({
   placeholder,
   name,
   icon,
+  value,
+  checked,
+  onChange,
 }: InputProps) => {
   const renderIcon = () => {
     if (!icon) return null;
-
-    // if icon is already a React element (e.g. <Icon /> passed), render it directly
     if (React.isValidElement(icon)) return icon;
-
-    // otherwise treat icon as a component (ElementType) and create it
     const IconComponent = icon as React.ElementType;
     return <IconComponent />;
   };
@@ -24,7 +23,14 @@ const Input = ({
     <>
       {type === "checkbox" ? (
         <>
-          <input type={type} id={id} name={name} className="w-[15px] sm:w-5" />
+          <input
+            type={type}
+            id={id}
+            name={name}
+            checked={checked}
+            onChange={onChange}
+            className="w-[15px] sm:w-5"
+          />
           <label
             htmlFor={id}
             className="text-sec-text text-[12px] md:text-[13px]"
@@ -34,7 +40,10 @@ const Input = ({
         </>
       ) : (
         <>
-          <label htmlFor={id} className="text-main-text flex items-center">
+          <label
+            htmlFor={id}
+            className="text-main-text flex items-center gap-1"
+          >
             {renderIcon()}
             {labelText}
           </label>
@@ -44,6 +53,8 @@ const Input = ({
             className="input"
             name={name}
             placeholder={placeholder}
+            value={value}
+            onChange={onChange}
           />
         </>
       )}
