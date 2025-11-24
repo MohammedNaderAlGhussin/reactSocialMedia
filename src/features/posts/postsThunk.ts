@@ -19,3 +19,20 @@ export const fetchPosts = createAsyncThunk(
     }
   }
 );
+
+export const createPost = createAsyncThunk(
+  "posts/createPost",
+  async (body: string, thunkAPI) => {
+    try {
+      const res = await PostService.createPost(body);
+      return res;
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        return thunkAPI.rejectWithValue(
+          err.response?.data?.message || err.message || "Request failed"
+        );
+      }
+      return thunkAPI.rejectWithValue("Something went wrong");
+    }
+  }
+);
