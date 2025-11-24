@@ -30,6 +30,8 @@ const Login = () => {
     remember: true,
   });
 
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -40,8 +42,19 @@ const Login = () => {
     // setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const validate = () => {
+    const temp: Record<string, string> = {};
+
+    if (!formData.username.trim()) temp.username = "Username is required";
+    if (!formData.password.trim()) temp.password = "Password is required";
+    setErrors(temp);
+    return Object.keys(temp).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validate()) return;
 
     const res = await dispatch(loginThunk(formData));
 
@@ -62,6 +75,7 @@ const Login = () => {
       icon: UsernameIcon,
       value: formData.username,
       onChange: handleChange,
+      error: errors.username || null,
     },
     {
       id: "password",
@@ -72,6 +86,7 @@ const Login = () => {
       icon: PasswordIcon,
       value: formData.password,
       onChange: handleChange,
+      error: errors.password || null,
     },
   ];
   const checkbox: InputProps = {
