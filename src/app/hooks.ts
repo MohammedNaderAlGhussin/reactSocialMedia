@@ -8,3 +8,6 @@ export const useAppSelector = useSelector.withTypes<RootState>();
 
 // Custom hook to select posts state
 export const usePostsSelector = () => useAppSelector((state) => state.posts);
+
+// Custom hook to select auth state
+export const useAuthSelector = () => useAppSelector((state) => state.auth);
