@@ -11,7 +11,9 @@ const Button = ({
       type={type}
       disabled={disabled}
       onClick={onClick}
-      className={`linear-primary py-2 text-white text-lg rounded-lg cursor-pointer shadow-primary-hv shadow-md mb-2 text-center disabled:opacity-50`}
+      className={`linear-primary py-2 text-white text-lg rounded-lg shadow-md mb-2 text-center w-full ${
+        disabled ? "opacity-60 cursor-not-allowed" : "cursor-pointer"
+      }`}
     >
       {content}
     </button>
