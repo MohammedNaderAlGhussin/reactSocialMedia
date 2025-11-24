@@ -5,4 +5,9 @@ export const PostService = {
     const res = await api.get("/posts");
     return res.data.data;
   },
+
+  createPost: async (body: string) => {
+    const res = await api.post("/posts", { body });
+    return res.data.data;
+  },
 };
