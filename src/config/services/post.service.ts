@@ -1,3 +1,4 @@
+import type { CreatePostPayload } from "../types/post.types";
 import { api } from "./../axios.config";
 
 export const PostService = {
@@ -6,8 +7,17 @@ export const PostService = {
     return res.data.data;
   },
 
-  createPost: async (body: string) => {
-    const res = await api.post("/posts", { body });
+  createPost: async (payload: CreatePostPayload) => {
+    const formData = new FormData();
+    formData.append("body", payload.body);
+    if (payload.imgageFile) {
+      formData.append("image", payload.imgageFile);
+    }
+    const res = await api.post("/posts", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return res.data.data;
   },
 };
