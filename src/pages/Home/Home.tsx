@@ -7,13 +7,22 @@ import { createPost } from "../../features/posts/postsThunk";
 const Home = () => {
   const dispatch = useAppDispatch();
   const [post, setPost] = useState("");
+  const [image, setImage] = useState<File | null>(null);
 
   const handelChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPost(e.target.value);
   };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setImage(e.target.files[0]);
+    }
+  };
   const addPost = async () => {
     console.log(post);
-    const result = await dispatch(createPost(post));
+    const result = await dispatch(
+      createPost({ body: post, imgageFile: image })
+    );
 
     if (createPost.fulfilled.match(result)) {
       console.log("Success:", result.payload);
@@ -21,6 +30,7 @@ const Home = () => {
       console.log("Failed:", result.payload);
     }
     setPost("");
+    setImage(null);
   };
   return (
     <div className="min-h-screen bg-main-bg relative">
@@ -74,10 +84,22 @@ const Home = () => {
                 placeholder="What's in your mind?"
               ></textarea>
             </div>
-            <div className="flex p-4 w-full">
-              <a href="" className="text-primary rounded-full p-2">
-                image
-              </a>
+            <div className="flex items-center p-4 w-full">
+              <input
+                id="post-image"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="hidden"
+              />
+
+              <label
+                htmlFor="post-image"
+                className="text-primary rounded-full p-2 cursor-pointer"
+              >
+                📷
+              </label>
+
               <a href="" className="text-primary rounded-full p-2">
                 face
               </a>
@@ -88,6 +110,7 @@ const Home = () => {
                 Post
               </button>
             </div>
+            
           </div>
           {/*== Post Box ==*/}
           {/* PostsList */}
