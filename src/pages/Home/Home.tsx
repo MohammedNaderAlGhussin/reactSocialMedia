@@ -1,7 +1,27 @@
+import { useState } from "react";
+import { useAppDispatch } from "../../app/hooks";
 import Header from "../../components/layout/Header/Header";
 import PostsList from "../../components/Posts/PostsList";
+import { createPost } from "../../features/posts/postsThunk";
 
 const Home = () => {
+  const dispatch = useAppDispatch();
+  const [post, setPost] = useState("");
+
+  const handelChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setPost(e.target.value);
+  };
+  const addPost = async () => {
+    console.log(post);
+    const result = await dispatch(createPost(post));
+
+    if (createPost.fulfilled.match(result)) {
+      console.log("Success:", result.payload);
+    } else {
+      console.log("Failed:", result.payload);
+    }
+    setPost("");
+  };
   return (
     <div className="min-h-screen bg-main-bg relative">
       <Header />
@@ -48,6 +68,8 @@ const Home = () => {
                 className="w-10 h-10 rounded-full"
               />
               <textarea
+                value={post}
+                onChange={handelChange}
                 className="w-full  text-gray-900 p-2 resize-none focus:outline-none text-"
                 placeholder="What's in your mind?"
               ></textarea>
@@ -59,12 +81,12 @@ const Home = () => {
               <a href="" className="text-primary rounded-full p-2">
                 face
               </a>
-              <a
-                href=""
-                className=" bg-primary text-white duration-300 hover:bg-primary-hv font-bold flex items-center justify-center rounded-full px-5 py-2 ml-auto mr-1"
+              <button
+                onClick={addPost}
+                className=" bg-primary text-white duration-300 hover:bg-primary-hv font-bold cursor-pointer flex items-center justify-center rounded-full px-5 py-2 ml-auto mr-1"
               >
                 Post
-              </a>
+              </button>
             </div>
           </div>
           {/*== Post Box ==*/}
