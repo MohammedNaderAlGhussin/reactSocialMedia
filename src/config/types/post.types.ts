@@ -14,3 +14,8 @@ export interface Post {
   created_at: string;
   comments_count: number;
 }
+
+export interface CreatePostPayload {
+  body: string;
+  imgageFile?: File | null;
+}
