@@ -1,16 +1,20 @@
-import { Link } from "react-router-dom";
 import type { ButtonProps } from "./Button.types";
 
-const Button = ({ content, type }: ButtonProps) => {
+const Button = ({
+  content,
+  type = "button",
+  disabled,
+  onClick,
+}: ButtonProps) => {
   return (
-    <Link
-      to={"/home"}
-      className="linear-primary py-2 text-white text-lg rounded-lg cursor-pointer shadow-primary-hv shadow-md mb-2 text-center"
+    <button
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+      className={`linear-primary py-2 text-white text-lg rounded-lg cursor-pointer shadow-primary-hv shadow-md mb-2 text-center disabled:opacity-50`}
     >
-      <button type={type} className="cursor-pointer">
-        {content}
-      </button>
-    </Link>
+      {content}
+    </button>
   );
 };
 
