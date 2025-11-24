@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchPosts } from "./postsThunk";
+import { createPost, fetchPosts } from "./postsThunk";
 import type { PostsState } from "./types";
 
 const initialState: PostsState = {
@@ -13,6 +13,7 @@ export const postsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // Fetch Posts
     builder
       .addCase(fetchPosts.pending, (state) => {
         state.loading = true;
@@ -26,6 +27,20 @@ export const postsSlice = createSlice({
         state.loading = false;
         state.error =
           (action.payload as string) || "ERROR: Failed to fetch posts";
+      });
+    // Create Post
+    builder
+      .addCase(createPost.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(createPost.fulfilled, (state, action) => {
+        state.loading = false;
+        state.posts.unshift(action.payload); // add new post to the top
+      })
+      .addCase(createPost.rejected, (state, action) => {
+        state.loading = false;
+        state.error = (action.payload as string) || "Failed to create post";
       });
   },
 });
