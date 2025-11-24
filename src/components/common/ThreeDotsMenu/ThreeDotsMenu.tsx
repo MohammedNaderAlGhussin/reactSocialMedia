@@ -6,11 +6,14 @@ export default function ThreeDotsMenu() {
   return (
     <div
       className="relative inline-block text-left"
-      onClick={(e) => e.stopPropagation()}
+      onClick={() => setOpen(false)}
     >
       {/* 3 dots button */}
       <button
-        onClick={() => setOpen(!open)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen(!open);
+        }}
         className="p-2 rounded-full hover:bg-gray-200 cursor-pointer"
       >
         <svg
