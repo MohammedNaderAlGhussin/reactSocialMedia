@@ -110,7 +110,20 @@ const Home = () => {
                 Post
               </button>
             </div>
-            
+            {/* Preview if an image is selected */}
+            {image && (
+              <div className="px-4 mb-2 flex items-center">
+                <span className="text-sm text-green-600  block px-4">
+                  📎 {image.name}
+                </span>
+                <span
+                  className="text-red-500 cursor-pointer w-6 h-6 flex items-center justify-center rounded-full mt-1 border border-red-500 hover:bg-red-500 hover:text-white duration-300"
+                  onClick={() => setImage(null)}
+                >
+                  X
+                </span>
+              </div>
+            )}
           </div>
           {/*== Post Box ==*/}
           {/* PostsList */}
