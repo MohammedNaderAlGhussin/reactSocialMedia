@@ -1,6 +1,11 @@
 import Header from "../../components/layout/Header/Header";
+import type { AuthUser } from "../../config/types/auth.types";
 
 const Profile = () => {
+  const user = window.localStorage.getItem("user")
+    ? (JSON.parse(window.localStorage.getItem("user") as string) as AuthUser)
+    : null;
+  console.log(user);
   return (
     <div className="min-h-screen bg-main-bg ">
       <Header />
@@ -11,13 +16,13 @@ const Profile = () => {
             <div className="linear rounded-t-xl h-40"></div>
             {/* Avatar */}
             <div className="hidden sm:flex w-25 h-25 border-2 border-white rounded-full linear  text-white  items-center justify-center text-2xl  absolute top-28 left-5 xl:left-10">
-              JD
+              {user?.name.charAt(0).toUpperCase()}
             </div>
             {/*== Avatar ==*/}
             <div className="container mx-auto w-1/2 lg:w-[65%] flex flex-col gap-4 items-sart mt-5  pb-4">
               <div className="">
-                <h1 className="font-bold text-2xl">John Doe</h1>
-                <p className="text-sec-text">@johndoe</p>
+                <h1 className="font-bold text-2xl">{user?.name}</h1>
+                <p className="text-sec-text">@{user?.username}</p>
               </div>
               <div className="">
                 <ul className="flex gap-3 font-bold text-xl">
