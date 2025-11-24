@@ -1,11 +1,19 @@
+import { usePostsSelector } from "../../app/hooks";
 import Header from "../../components/layout/Header/Header";
+import PostCard from "../../components/Posts/PostCard";
 import type { AuthUser } from "../../config/types/auth.types";
 
 const Profile = () => {
   const user = window.localStorage.getItem("user")
     ? (JSON.parse(window.localStorage.getItem("user") as string) as AuthUser)
     : null;
-  console.log(user);
+
+  const { posts } = usePostsSelector();
+  // Rendering user profile posts
+  const userPosts = posts
+    .filter((post) => post.author.id === user?.id)
+    .map((post) => <PostCard key={post.id} {...post} />);
+
   return (
     <div className="min-h-screen bg-main-bg ">
       <Header />
@@ -59,53 +67,13 @@ const Profile = () => {
           {/*== Profile ==*/}
           {/* Posts */}
           <div className="pb-5">
-            <div className="bg-white mb-5 rounded-xl cursor-pointer pb-4">
-              <div className="flex items-center p-4 pb-0">
-                <img
-                  src="https://easykey.uk/images/vgift/barry-avatar-400.png"
-                  alt=""
-                  className="w-9 h-9 rounded-full"
-                />
-                <p className="flex itmes-center flex-1 flex-wrap shrink-0  text-gray-800 font-medium ml-2">
-                  Nader Al Ghussin
-                  <span className="block text-sm leading-6 text-gray-400 sm:ml-0 md:ml-1">
-                    @Nader Al Ghussin . Nov 11
-                  </span>
-                </p>
-              </div>
-              <div className="pl-8 xl:pl-16 pr-4 pt-2">
-                <p className="w-auto font-medium text-gray-800 ">
-                  Any fool can write code that a computer can understand. Good
-                  programmers write code that humans can understand.
-                  <br />
-                  <br />
-                  Experience is the name everyone gives to their
-                  <a href="#" className="text-blue-400">
-                    #mistakes
-                  </a>
-                  <br />
-                  <br />
-                  Simplicity is the soul of efficiency.
-                </p>
-                <img
-                  className="rounded-2xl border border-gray-600 my-3 mr-2 w-full"
-                  src="https://images.nature.com/original/magazine-assets/d41586-019-00653-5/d41586-019-00653-5_16459150.jpg"
-                  alt=""
-                />
-                <div className="flex justify-around items-center">
-                  <div className="flex items-center text-xs text-gray-400 hover:text-blue-400 ">
-                    likes 12.3 k
-                  </div>
-
-                  <div className="flex items-center  text-xs text-gray-400 hover:text-red-600">
-                    comments 14 k
-                  </div>
-                  <div className="flex items-center  text-xs text-gray-400 hover:text-blue-400">
-                    share
-                  </div>
-                </div>
-              </div>
-            </div>
+            {userPosts.length > 0 ? (
+              userPosts
+            ) : (
+              <p className="bg-white mb-5 rounded-xl cursor-pointer p-4 text-center text-gray-500 text-xl">
+                No posts yet
+              </p>
+            )}
           </div>
           {/*== Posts ==*/}
         </div>
