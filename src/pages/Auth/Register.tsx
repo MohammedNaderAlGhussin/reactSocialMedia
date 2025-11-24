@@ -37,23 +37,32 @@ const Register = () => {
     terms: false,
   });
 
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setForm({ ...form, [name]: type === "checkbox" ? checked : value });
   };
 
+  const validate = () => {
+    const temp: Record<string, string> = {};
+
+    if (!form.name.trim()) temp.name = "Name is required";
+    if (!form.email.trim()) temp.email = "Email is required";
+    if (!form.username.trim()) temp.username = "Username is required";
+    if (!form.password.trim()) temp.password = "Password is required";
+    if (form.password !== form.confirmPassword)
+      temp.confirmPassword = "Passwords do not match";
+    if (!form.terms) temp.acceptedTerms = "You must accept Terms & Policy";
+
+    setErrors(temp);
+    return Object.keys(temp).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (form.password !== form.confirmPassword) {
-      alert("Passwords do not match");
-      return <ErrorMsg message="Passwords do not match" />;
-    }
-
-    if (!form.terms) {
-      alert("You must accept the Terms & Policy");
-      return <ErrorMsg message="You must agree to the terms and services" />;
-    }
+    if (!validate()) return;
 
     const res = await dispatch(
       registerThunk({
@@ -88,6 +97,7 @@ const Register = () => {
       icon: EmailIcon,
       value: form.email,
       onChange: handleChange,
+      error: errors.email,
     },
     {
       id: "username",
@@ -98,6 +108,7 @@ const Register = () => {
       icon: UsernameIcon,
       value: form.username,
       onChange: handleChange,
+      error: errors.username,
     },
     {
       id: "password",
@@ -108,16 +119,18 @@ const Register = () => {
       icon: PasswordIcon,
       value: form.password,
       onChange: handleChange,
+      error: errors.password,
     },
     {
       id: "confrim-password",
       name: "confirmPassword",
-      labelText: "Confirm Password",
+      labelText: "Confirm",
       placeholder: "Confirm your Password",
       type: "password",
       icon: ConfirmPasswordIcon,
       value: form.confirmPassword,
       onChange: handleChange,
+      error: errors.confirmPassword,
     },
   ];
 
@@ -135,6 +148,7 @@ const Register = () => {
     labelText: termsAndPolicy,
     checked: form.terms,
     onChange: handleChange,
+    error: errors.acceptedTerms,
   };
   const button: ButtonProps = {
     content: loading ? "Signing up..." : "Sign Up",
