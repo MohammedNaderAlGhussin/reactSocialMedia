@@ -27,10 +27,17 @@ const Login = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
+    remember: true,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+
+    // setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -40,7 +47,7 @@ const Login = () => {
 
     console.log(res);
     if (res.meta.requestStatus === "fulfilled") {
-      console.log("LOGIN SUCCESS — redirect here");
+      console.log("LOGIN SUCCESS __");
       navigate("/home");
     }
   };
@@ -72,6 +79,8 @@ const Login = () => {
     name: "remember",
     labelText: "Remember me",
     type: "checkbox",
+    checked: formData.remember,
+    onChange: handleChange,
   };
 
   const button: ButtonProps = {
