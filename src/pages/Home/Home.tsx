@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, usePostsSelector } from "../../app/hooks";
 import Header from "../../components/layout/Header/Header";
 import PostsList from "../../components/Posts/PostsList";
 import { createPost } from "../../features/posts/postsThunk";
 
 const Home = () => {
   const dispatch = useAppDispatch();
+  const { loading } = usePostsSelector();
   const [post, setPost] = useState("");
   const [image, setImage] = useState<File | null>(null);
 
@@ -105,9 +106,15 @@ const Home = () => {
               </a>
               <button
                 onClick={addPost}
-                className=" bg-primary text-white duration-300 hover:bg-primary-hv font-bold cursor-pointer flex items-center justify-center rounded-full px-5 py-2 ml-auto mr-1"
+                disabled={loading}
+                className={`bg-primary text-white duration-300 font-bold cursor-pointer flex items-center justify-center rounded-full px-5 py-2 ml-auto mr-1 
+                  ${
+                    loading
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:bg-primary-hv"
+                  }`}
               >
-                Post
+                {loading ? "Posting..." : "Post"}
               </button>
             </div>
             {/* Preview if an image is selected */}
