@@ -4,6 +4,8 @@ export interface InputProps {
   type: string;
   name: string;
   value?: string;
+  checked?: boolean;
   placeholder?: string;
   icon?: React.ElementType;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
