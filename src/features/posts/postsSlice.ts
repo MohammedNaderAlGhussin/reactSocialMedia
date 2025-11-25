@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createPost, fetchPosts } from "./postsThunk";
+import { createPost, deletePost, fetchPosts } from "./postsThunk";
 import type { PostsState } from "./types";
 
 const initialState: PostsState = {
@@ -41,6 +41,21 @@ export const postsSlice = createSlice({
       .addCase(createPost.rejected, (state, action) => {
         state.loading = false;
         state.error = (action.payload as string) || "Failed to create post";
+      });
+
+    // Delete Post
+    builder
+      .addCase(deletePost.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
+        state.loading = false;
+        state.posts = state.posts.filter((post) => post.id !== action.payload);
+      })
+      .addCase(deletePost.rejected, (state, action) => {
+        state.loading = false;
+        state.error = (action.payload as string) || "Failed to delete post";
       });
   },
 });
