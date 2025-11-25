@@ -20,4 +20,9 @@ export const PostService = {
     });
     return res.data.data;
   },
+
+  deletePost: async (id: number) => {
+    const res = await api.delete(`/posts/${id}`);
+    return res.data.data;
+  },
 };
