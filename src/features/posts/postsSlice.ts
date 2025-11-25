@@ -5,6 +5,8 @@ import type { PostsState } from "./types";
 const initialState: PostsState = {
   posts: [],
   loading: false,
+  creating: false,
+  deleting: false,
   error: null,
 };
 
@@ -31,30 +33,32 @@ export const postsSlice = createSlice({
     // Create Post
     builder
       .addCase(createPost.pending, (state) => {
-        state.loading = true;
+        // Creating type instead of loading.
+        state.creating = true;
         state.error = null;
       })
       .addCase(createPost.fulfilled, (state, action) => {
-        state.loading = false;
+        state.creating = false;
         state.posts.unshift(action.payload); // add new post to the top
       })
       .addCase(createPost.rejected, (state, action) => {
-        state.loading = false;
+        state.creating = false;
         state.error = (action.payload as string) || "Failed to create post";
       });
 
     // Delete Post
     builder
       .addCase(deletePost.pending, (state) => {
-        state.loading = true;
+        // Deleting type instead of loading.
+        state.deleting = true;
         state.error = null;
       })
       .addCase(deletePost.fulfilled, (state, action) => {
-        state.loading = false;
+        state.deleting = false;
         state.posts = state.posts.filter((post) => post.id !== action.payload);
       })
       .addCase(deletePost.rejected, (state, action) => {
-        state.loading = false;
+        state.deleting = false;
         state.error = (action.payload as string) || "Failed to delete post";
       });
   },
