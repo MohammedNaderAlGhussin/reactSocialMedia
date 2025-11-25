@@ -14,7 +14,6 @@ const PostCard = ({
     ? JSON.parse(window.localStorage.getItem("user") as string)
     : null;
 
-  console.log(id);
   const isOwner = author.id === currentUser.id;
   return (
     <div className="bg-white mb-5 rounded-xl pb-4">
