@@ -2,6 +2,7 @@ import type { Post } from "../../config/types/post.types";
 import ThreeDotsMenu from "../common/ThreeDotsMenu/ThreeDotsMenu";
 
 const PostCard = ({
+  id,
   body,
   image,
   author,
@@ -13,6 +14,7 @@ const PostCard = ({
     ? JSON.parse(window.localStorage.getItem("user") as string)
     : null;
 
+  console.log(id);
   const isOwner = author.id === currentUser.id;
   return (
     <div className="bg-white mb-5 rounded-xl pb-4">
@@ -35,7 +37,7 @@ const PostCard = ({
             </span>
           </p>
         </div>
-        {isOwner && <ThreeDotsMenu />}
+        {isOwner && <ThreeDotsMenu id={id} />}
       </div>
       <div className="pl-8 xl:pl-16 pr-4 pt-2">
         <p className="w-auto font-medium text-gray-800 ">{body}</p>
