@@ -37,3 +37,20 @@ export const createPost = createAsyncThunk(
     }
   }
 );
+
+export const deletePost = createAsyncThunk(
+  "/posts/deletePost",
+  async (payload: number, thunkAPI) => {
+    try {
+      await PostService.deletePost(payload);
+      return payload;
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        return thunkAPI.rejectWithValue(
+          `${err?.message}: ${err.response?.data?.message}`
+        );
+      }
+      return thunkAPI.rejectWithValue("Something went wrong");
+    }
+  }
+);
