@@ -1,8 +1,18 @@
 import { useState } from "react";
+import { deletePost } from "../../../features/posts/postsThunk";
+import { useAppDispatch } from "../../../app/hooks";
 
-export default function ThreeDotsMenu() {
+interface ThreeDotsMenuProps {
+  id: number;
+}
+
+export default function ThreeDotsMenu({ id }: ThreeDotsMenuProps) {
+  const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
 
+  const deletePostHandler = () => {
+    dispatch(deletePost(id));
+  };
   return (
     <div
       className="relative inline-block text-left"
@@ -32,7 +42,10 @@ export default function ThreeDotsMenu() {
           <button className="w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer border-b border-gray-100">
             Edit
           </button>
-          <button className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600 cursor-pointer">
+          <button
+            className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600 cursor-pointer"
+            onClick={deletePostHandler}
+          >
             Delete
           </button>
         </div>
