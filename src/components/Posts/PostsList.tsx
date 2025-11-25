@@ -10,14 +10,16 @@ const PostsList = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchPosts());
-  }, [dispatch]);
+    if (posts.length === 0) {
+      dispatch(fetchPosts());
+    }
+  }, [posts.length, dispatch]);
   const postList = posts.map((post) => <PostCard key={post.id} {...post} />);
 
   return (
     <div className="pb-5">
-      {loading && <Loader />}
-      {!loading && postList}
+      {loading && posts.length === 0 && <Loader />}
+      {postList}
       {error && <ErrorMsg message={error} />}
     </div>
   );
