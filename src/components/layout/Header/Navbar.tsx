@@ -1,12 +1,16 @@
 import { NavLink } from "react-router-dom";
 import { useAppDispatch } from "../../../app/hooks";
 import { logoutThunk } from "../../../features/auth/authThunk";
+import { showToast } from "../../../features/toast/toastSlice";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
 
   const handelLogOut = () => {
     dispatch(logoutThunk());
+    dispatch(
+      showToast({ type: "success", message: "Logged out successfully !" })
+    );
   };
 
   return (
