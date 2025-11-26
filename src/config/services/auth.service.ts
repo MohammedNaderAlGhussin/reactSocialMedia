@@ -16,7 +16,7 @@ export const AuthService = {
     return res.data;
   },
 
-  // 🔹 Logout (token added automatically by axios interceptor)
+  //  Logout (token added automatically by axios interceptor)
   logout: async (): Promise<void> => {
     await api.post("/logout");
   },
