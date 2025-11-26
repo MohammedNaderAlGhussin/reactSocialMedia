@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../../app/hooks";
 import { openModal } from "../../../features/modal/modalSlice";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface ThreeDotsMenuProps {
   id: number;
@@ -43,20 +44,28 @@ export default function ThreeDotsMenu({ id, body }: ThreeDotsMenuProps) {
 
       {/* Dropdown menu */}
       {open && (
-        <div className="absolute right-0 mt-1 w-32 bg-white border-2 border-primary rounded shadow-md z-10 ">
-          <button
-            className="w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer border-b border-gray-100"
-            onClick={editPostHandler}
+        <AnimatePresence>
+          <motion.div
+            className="absolute right-0 mt-1 w-32 bg-white border-2 border-primary rounded shadow-md z-10 "
+            initial={{ opacity: 0, scale: 0.75 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.75 }}
+            transition={{ duration: 0.25 }}
           >
-            Edit
-          </button>
-          <button
-            className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600 cursor-pointer"
-            onClick={deletePostHandler}
-          >
-            Delete
-          </button>
-        </div>
+            <button
+              className="w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer border-b border-gray-100"
+              onClick={editPostHandler}
+            >
+              Edit
+            </button>
+            <button
+              className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600 cursor-pointer"
+              onClick={deletePostHandler}
+            >
+              Delete
+            </button>
+          </motion.div>
+        </AnimatePresence>
       )}
     </div>
   );
