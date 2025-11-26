@@ -1,5 +1,6 @@
 import { useAppDispatch } from "../../app/hooks";
 import { deletePost } from "../../features/posts/postsThunk";
+import { showToast } from "../../features/toast/toastSlice";
 
 export default function DeleteConfirm({
   postId,
@@ -9,6 +10,14 @@ export default function DeleteConfirm({
   onFinish: () => void;
 }) {
   const dispatch = useAppDispatch();
+
+  const deletePostsHandler = () => {
+    dispatch(deletePost(postId));
+    dispatch(
+      showToast({ type: "success", message: "Post deleted successfully!" })
+    );
+    onFinish();
+  };
   return (
     <div>
       <h2 className="text-xl font-bold mb-4">Delete Post?</h2>
@@ -23,10 +32,7 @@ export default function DeleteConfirm({
           Cancel
         </button>
         <button
-          onClick={() => {
-            dispatch(deletePost(postId));
-            onFinish();
-          }}
+          onClick={deletePostsHandler}
           className="px-4 py-2 bg-red-600 text-white rounded cursor-pointer"
         >
           Delete
