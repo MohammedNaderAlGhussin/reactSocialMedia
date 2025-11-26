@@ -13,3 +13,6 @@ export const useAuthSelector = () => useAppSelector((state) => state.auth);
 
 // Custom hook to select modal state
 export const useModalSelector = () => useAppSelector((state) => state.modal);
+
+// Custom hook to select taost state
+export const useToastSelector = () => useAppSelector((state) => state.taost);
