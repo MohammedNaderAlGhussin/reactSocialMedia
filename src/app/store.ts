@@ -2,13 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import postsReducer from "../features/posts/postsSlice";
 import authReducer from "../features/auth/authSlice";
 import modalReducer from "../features/modal/modalSlice";
-// ...
+import toastReducer from "../features/toast/toastSlice";
 
 export const store = configureStore({
   reducer: {
     posts: postsReducer,
     auth: authReducer,
     modal: modalReducer,
+    taost: toastReducer,
   },
 });
 
