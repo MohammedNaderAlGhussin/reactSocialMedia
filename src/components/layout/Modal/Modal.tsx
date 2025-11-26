@@ -3,10 +3,20 @@ import { useAppDispatch, useModalSelector } from "../../../app/hooks";
 import { closeModal } from "../../../features/modal/modalSlice";
 import DeleteConfirm from "../../Posts/DeleteConfirm";
 import EditForm from "../../Posts/EditForm";
+import { useEffect } from "react";
 
 const Modal = () => {
   const { isOpened, type, payload } = useModalSelector();
   const dispatch = useAppDispatch();
+
+  // Disable scroll when modal is opened
+  useEffect(() => {
+    if (isOpened) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [isOpened]);
 
   return (
     <AnimatePresence>
