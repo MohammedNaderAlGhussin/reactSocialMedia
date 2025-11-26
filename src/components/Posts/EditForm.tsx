@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, usePostsSelector } from "../../app/hooks";
 import { updatePost } from "../../features/posts/postsThunk";
 import { showToast } from "../../features/toast/toastSlice";
 import type { Post } from "../../config/types/post.types";
@@ -10,6 +10,7 @@ interface EditFormProps {
 }
 
 const EditForm = ({ post, onFinish }: EditFormProps) => {
+  const { updating } = usePostsSelector();
   const dispatch = useAppDispatch();
   const [text, setText] = useState(post.body);
   const [image, setImage] = useState<File | null>(null);
@@ -28,7 +29,12 @@ const EditForm = ({ post, onFinish }: EditFormProps) => {
     if (!text.trim() && !image) return;
 
     const result = await dispatch(
-      updatePost({ id: post.id, body: text, imageFile: image, imageUrl: imageUrl })
+      updatePost({
+        id: post.id,
+        body: text,
+        imageFile: image,
+        imageUrl: imageUrl,
+      })
     );
 
     if (updatePost.fulfilled.match(result)) {
@@ -59,9 +65,14 @@ const EditForm = ({ post, onFinish }: EditFormProps) => {
 
       <button
         onClick={handleSubmit}
-        className="bg-primary hover:bg-primary-hv text-white font-bold rounded-lg py-2"
+        className={`bg-primary text-white duration-300 font-bold cursor-pointer flex items-center justify-center rounded-xl w-[150px] py-2 ml-auto mr-1 
+                  ${
+                    updating
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:bg-primary-hv"
+                  }`}
       >
-        Save Changes
+        {updating ? "...Saving" : "Save Changes"}
       </button>
     </div>
   );
