@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createPost, deletePost, fetchPosts } from "./postsThunk";
+import { createPost, deletePost, fetchPosts, updatePost } from "./postsThunk";
 import type { PostsState } from "./types";
 
 const initialState: PostsState = {
   posts: [],
   loading: false,
   creating: false,
+  updating: false,
   deleting: false,
   error: null,
 };
@@ -44,6 +45,23 @@ export const postsSlice = createSlice({
       .addCase(createPost.rejected, (state, action) => {
         state.creating = false;
         state.error = (action.payload as string) || "Failed to create post";
+      });
+
+    // Update Post
+    builder
+      .addCase(updatePost.pending, (state) => {
+        state.updating = true;
+        state.error = null;
+      })
+      .addCase(updatePost.fulfilled, (state, action) => {
+        state.updating = false;
+        state.posts = state.posts.map((post) =>
+          post.id === action.payload.id ? action.payload : post
+        );
+      })
+      .addCase(updatePost.rejected, (state, action) => {
+        state.updating = true;
+        state.error = (action.payload as string) || "Update Failed";
       });
 
     // Delete Post
