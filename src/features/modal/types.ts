@@ -1,5 +1,6 @@
 export interface ModalState {
   isOpened: boolean;
   type: "edit" | "delete" | null;
-  payload: unknown | null; //  post data or id
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  payload: any | null; //  post data or id
 }
