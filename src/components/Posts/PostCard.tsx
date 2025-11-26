@@ -36,7 +36,7 @@ const PostCard = ({
             </span>
           </p>
         </div>
-        {isOwner && <ThreeDotsMenu id={id} />}
+        {isOwner && <ThreeDotsMenu id={id} body={body} />}
       </div>
       <div className="pl-8 xl:pl-16 pr-4 pt-2">
         <p className="w-auto font-medium text-gray-800 ">{body}</p>
