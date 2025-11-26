@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { deletePost } from "../../../features/posts/postsThunk";
 import { useAppDispatch } from "../../../app/hooks";
+import { openModal } from "../../../features/modal/modalSlice";
 
 interface ThreeDotsMenuProps {
   id: number;
+  body: string;
 }
 
 export default function ThreeDotsMenu({ id }: ThreeDotsMenuProps) {
@@ -11,7 +12,7 @@ export default function ThreeDotsMenu({ id }: ThreeDotsMenuProps) {
   const [open, setOpen] = useState(false);
 
   const deletePostHandler = () => {
-    dispatch(deletePost(id));
+    dispatch(openModal({ type: "delete", payload: id }));
   };
   return (
     <div
