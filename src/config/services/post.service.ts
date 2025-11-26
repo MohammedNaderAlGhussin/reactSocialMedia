@@ -1,4 +1,4 @@
-import type { CreatePostPayload } from "../types/post.types";
+import type { CreatePostPayload, UpdatePostPayload } from "../types/post.types";
 import { api } from "./../axios.config";
 
 export const PostService = {
@@ -10,6 +10,7 @@ export const PostService = {
   createPost: async (payload: CreatePostPayload) => {
     const formData = new FormData();
     formData.append("body", payload.body);
+
     if (payload.imgageFile) {
       formData.append("image", payload.imgageFile);
     }
@@ -18,6 +19,20 @@ export const PostService = {
         "Content-Type": "multipart/form-data",
       },
     });
+    return res.data.data;
+  },
+
+  updatePost: async (payload: UpdatePostPayload) => {
+    const formData = new FormData();
+    formData.append("body", payload.body);
+
+    if (payload.imageFile) {
+      formData.append("image", payload.imageFile);
+    } else if (payload.imageUrl) {
+      // keep old image
+      formData.append("existingImage", payload.imageUrl);
+    }
+    const res = await api.put(`/posts/${payload.id}`, formData);
     return res.data.data;
   },
 
