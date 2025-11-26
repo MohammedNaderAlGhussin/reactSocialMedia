@@ -22,6 +22,7 @@ import EmailIcon from "../../components/icons/EmailIcon";
 import UsernameIcon from "../../components/icons/UsernameIcon";
 import PasswordIcon from "../../components/icons/PasswordIcon";
 import ConfirmPasswordIcon from "../../components/icons/ConfirmPasswordIcon";
+import { showToast } from "../../features/toast/toastSlice";
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -72,9 +73,20 @@ const Register = () => {
         email: form.email,
       })
     );
-    if (res.meta.requestStatus === "fulfilled") {
+    if (registerThunk.fulfilled.match(res)) {
       console.log("REGISTER SUCCESS __");
       navigate("/home");
+      dispatch(
+        showToast({
+          message: "Account created successfully 🎊",
+          type: "success",
+        })
+      );
+    } else {
+      showToast({
+        message: "Failed Creating An Account! ",
+        type: "error",
+      });
     }
   };
   const inputs: InputProps[] = [
