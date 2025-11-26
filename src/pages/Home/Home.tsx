@@ -3,6 +3,7 @@ import { useAppDispatch, usePostsSelector } from "../../app/hooks";
 import Header from "../../components/layout/Header/Header";
 import PostsList from "../../components/Posts/PostsList";
 import { createPost } from "../../features/posts/postsThunk";
+import { showToast } from "../../features/toast/toastSlice";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -32,6 +33,9 @@ const Home = () => {
     } else {
       console.log("Failed:", result.payload);
     }
+    dispatch(
+      showToast({ type: "success", message: "Post Created Successfully !" })
+    );
     setPost("");
     setImage(null);
   };
