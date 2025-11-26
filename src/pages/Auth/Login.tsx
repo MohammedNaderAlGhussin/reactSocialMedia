@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { loginThunk } from "../../features/auth/authThunk";
 import ErrorMsg from "../../components/common/Error/ErrorMsg";
+import { showToast } from "../../features/toast/toastSlice";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -59,9 +60,19 @@ const Login = () => {
     const res = await dispatch(loginThunk(formData));
 
     console.log(res);
-    if (res.meta.requestStatus === "fulfilled") {
+    console.log(res.payload);
+    
+    if (loginThunk.fulfilled.match(res)) {
       console.log("LOGIN SUCCESS __");
       navigate("/home");
+      dispatch(showToast({ type: "success", message: "You're logged in 🎉" }));
+    } else {
+      dispatch(
+        showToast({
+          type: "error",
+          message: "Login failed",
+        })
+      );
     }
   };
 
