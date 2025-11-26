@@ -6,8 +6,9 @@ import type {
   AuthResponse,
 } from "../../config/types/auth.types";
 import axios from "axios";
+import { showToast } from "../toast/toastSlice";
 
-// 🔹 Register
+//  Register
 export const registerThunk = createAsyncThunk<
   AuthResponse,
   RegisterPayload,
@@ -15,11 +16,21 @@ export const registerThunk = createAsyncThunk<
 >("auth/register", async (payload, thunkAPI) => {
   try {
     const response = await AuthService.register(payload);
+    thunkAPI.dispatch(
+      showToast({
+        message: "Account created successfully 🎊",
+        type: "success",
+      })
+    );
     return response;
   } catch (err: unknown) {
     if (axios.isAxiosError(err)) {
-      return thunkAPI.rejectWithValue(
-        err.response?.data?.message || "Register failed"
+      thunkAPI.dispatch(
+        showToast({
+          message:
+            err.response?.data?.message || "Failed Creating An Account! ",
+          type: "error",
+        })
       );
     }
     return thunkAPI.rejectWithValue(
@@ -28,7 +39,7 @@ export const registerThunk = createAsyncThunk<
   }
 });
 
-// 🔹 Login
+//  Login
 export const loginThunk = createAsyncThunk<
   AuthResponse,
   LoginPayload,
@@ -36,11 +47,20 @@ export const loginThunk = createAsyncThunk<
 >("auth/login", async (payload, thunkAPI) => {
   try {
     const response = await AuthService.login(payload);
+    thunkAPI.dispatch(
+      showToast({
+        message: "You're logged in 🎉",
+        type: "success",
+      })
+    );
     return response;
   } catch (err: unknown) {
     if (axios.isAxiosError(err)) {
-      return thunkAPI.rejectWithValue(
-        err.response?.data?.message || "Login failed"
+      thunkAPI.dispatch(
+        showToast({
+          message: err.response?.data?.message || "Login failed",
+          type: "error",
+        })
       );
     }
     return thunkAPI.rejectWithValue(
@@ -49,7 +69,7 @@ export const loginThunk = createAsyncThunk<
   }
 });
 
-// 🔹 Logout
+//  Logout
 export const logoutThunk = createAsyncThunk<
   void,
   void,
@@ -57,6 +77,12 @@ export const logoutThunk = createAsyncThunk<
 >("auth/logout", async (_, thunkAPI) => {
   try {
     await AuthService.logout();
+    thunkAPI.dispatch(
+      showToast({
+        message: "Logged out successfully!",
+        type: "success",
+      })
+    );
   } catch (err: unknown) {
     if (axios.isAxiosError(err)) {
       return thunkAPI.rejectWithValue(
