@@ -4,6 +4,7 @@ export interface PostsState {
   posts: Post[];
   loading: boolean;
   creating: boolean;
+  updating: boolean;
   deleting: boolean;
   error: string | null;
 }
