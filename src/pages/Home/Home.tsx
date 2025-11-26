@@ -29,15 +29,19 @@ const Home = () => {
     );
 
     if (createPost.fulfilled.match(result)) {
-      console.log("Success:", result.payload);
+      dispatch(
+        showToast({ type: "success", message: "Post Created Successfully !" })
+      );
+      setPost("");
+      setImage(null);
     } else {
-      console.log("Failed:", result.payload);
+      dispatch(
+        showToast({
+          type: "error",
+          message: "Failed to create post!",
+        })
+      );
     }
-    dispatch(
-      showToast({ type: "success", message: "Post Created Successfully !" })
-    );
-    setPost("");
-    setImage(null);
   };
   return (
     <div className="min-h-screen bg-main-bg relative">
