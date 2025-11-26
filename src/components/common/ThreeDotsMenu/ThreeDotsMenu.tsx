@@ -2,21 +2,21 @@ import { useState } from "react";
 import { useAppDispatch } from "../../../app/hooks";
 import { openModal } from "../../../features/modal/modalSlice";
 import { AnimatePresence, motion } from "framer-motion";
+import type { Post } from "../../../config/types/post.types";
 
 interface ThreeDotsMenuProps {
-  id: number;
-  body: string;
+  post: Post;
 }
 
-export default function ThreeDotsMenu({ id, body }: ThreeDotsMenuProps) {
+export default function ThreeDotsMenu({ post }: ThreeDotsMenuProps) {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
 
   const editPostHandler = () => {
-    dispatch(openModal({ type: "edit", payload: body }));
+    dispatch(openModal({ type: "edit", payload: post }));
   };
   const deletePostHandler = () => {
-    dispatch(openModal({ type: "delete", payload: id }));
+    dispatch(openModal({ type: "delete", payload: post.id }));
   };
 
   return (
