@@ -1,6 +1,7 @@
 import { useAppDispatch, useModalSelector } from "../../../app/hooks";
 import { closeModal } from "../../../features/modal/modalSlice";
 import DeleteConfirm from "../../Posts/DeleteConfirm";
+import EditForm from "../../Posts/EditForm";
 
 const Modal = () => {
   const { isOpened, type, payload } = useModalSelector();
@@ -19,10 +20,10 @@ const Modal = () => {
         </button>
 
         {/* Dynamic content */}
-        {/* {type === "edit" && (
+        {type === "edit" && (
           <EditForm post={payload} onFinish={() => dispatch(closeModal())} />
-        )} */}
-        
+        )}
+
         {type === "delete" && (
           <DeleteConfirm
             postId={payload}
