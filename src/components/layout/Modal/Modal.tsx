@@ -28,7 +28,7 @@ const Modal = () => {
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="bg-white rounded-xl p-6 w-[90%] max-w-md shadow-xl relative"
+            className="bg-card-bg rounded-xl p-6 w-[90%] max-w-md shadow-xl relative"
             initial={{ opacity: 0, scale: 0.75 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.75 }}

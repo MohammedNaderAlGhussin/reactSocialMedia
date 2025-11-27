@@ -21,7 +21,7 @@ export default function DeleteConfirm({
   return (
     <div>
       <h2 className="text-xl font-bold mb-4">Delete Post?</h2>
-      <p className="mb-6 text-gray-600">
+      <p className="mb-6 text-sec-text">
         Are you sure you want to delete this post?
       </p>
       <div className="flex gap-3 justify-end">

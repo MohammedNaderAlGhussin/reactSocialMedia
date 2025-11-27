@@ -20,10 +20,10 @@ const Profile = () => {
       <div className=" container mx-auto py-5 px-3  xl:px-5 flex flex-row gap-5 mt-20">
         <div className="mx-auto w-full md:w-3/4 lg:w-2/3">
           {/* Profile */}
-          <div className=" pb-3 bg-white mb-5 rounded-xl relative">
+          <div className=" pb-3 bg-card-bg mb-5 rounded-xl relative">
             <div className="linear rounded-t-xl h-40"></div>
             {/* Avatar */}
-            <div className="hidden sm:flex w-25 h-25 border-2 border-white rounded-full linear  text-white  items-center justify-center text-2xl  absolute top-28 left-5 xl:left-10">
+            <div className="hidden sm:flex w-25 h-25 border-2 border-light-border rounded-full linear  text-white  items-center justify-center text-2xl  absolute top-28 left-5 xl:left-10">
               {user?.name.charAt(0).toUpperCase()}
             </div>
             {/*== Avatar ==*/}

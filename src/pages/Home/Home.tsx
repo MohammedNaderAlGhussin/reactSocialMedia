@@ -59,7 +59,7 @@ const Home = () => {
 
       <div className="container mx-auto py-5 px-3  xl:px-5 flex flex-row gap-5 mt-20">
         {/* Left */}
-        <div className=" hidden md:block xl:w-1/5 xl:pr-4 w-30 h-fit shadow-lg p-3 bg-white rounded-xl sticky top-20 ">
+        <div className=" hidden md:block xl:w-1/5 xl:pr-4 w-30 h-fit shadow-lg p-3 bg-card-bg rounded-xl sticky top-20 ">
           <h1 className="font-bold text-lg xl:pl-1 text-center xl:text-start">
             Menu
           </h1>
@@ -91,13 +91,17 @@ const Home = () => {
         {/* Middle */}
         <div className="w-full xl:w-1/2 h-screen   rounded-xl">
           {/* Post Box */}
-          <div className=" pb-3 bg-white mb-5 rounded-xl">
+          <div className=" pb-3 bg-card-bg mb-5 rounded-xl">
             <div className="flex p-4">
-              <img src={avatarUrl} alt="" className="w-9 h-9 rounded-full" />
+              <img
+                src={avatarUrl}
+                alt=""
+                className="w-9 h-9 bg-main-bg rounded-full"
+              />
               <textarea
                 value={post}
                 onChange={handelChange}
-                className="w-full  text-gray-900 p-2 resize-none focus:outline-none text-"
+                className="w-full  text-main-text p-2 resize-none focus:outline-none bg-card-bg"
                 placeholder={`What's in your mind ${currentUser?.name}?`}
               ></textarea>
             </div>
@@ -153,7 +157,7 @@ const Home = () => {
         {/*== Middle ==*/}
 
         {/* Right */}
-        <div className="p-3 xl:pr-4 bg-white rounded-xl hidden w-[30%] xl:block h-fit shadow-lg  ">
+        <div className="p-3 xl:pr-4 bg-card-bg rounded-xl hidden w-[30%] xl:block h-fit shadow-lg  ">
           <h1 className="font-bold text-lg pl-1">Suggestions</h1>
           <ul className="flex flex-col gap-2 px-4 mt-4">
             <li className="menu-link">

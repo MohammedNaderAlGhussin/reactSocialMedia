@@ -39,7 +39,7 @@ const BurgerMenu = () => {
           )}
         </button>
         {show && (
-          <div className=" px-2 py-3 absolute top-15 -right-2 w-50 text-center z-50 bg-white shadow-lg">
+          <div className=" px-2 py-3 absolute top-15 -right-2 w-50 text-center z-50 bg-card-bg shadow-lg">
             <Link to={"/home"} className="burger-menu-link">
               Home
             </Link>

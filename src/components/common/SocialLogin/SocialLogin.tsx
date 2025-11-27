@@ -6,7 +6,7 @@ const SocialLogin = () => {
     <div className="flex flex-col gap-6">
       <div className="px-2">
         <p className="text-center bg-sec-text w-full h-px relative ">
-          <span className="text-sec-text bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-1 text-[15px]">
+          <span className="text-sec-text bg-card-bg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 py-1 text-[15px]">
             Or continue with
           </span>
         </p>

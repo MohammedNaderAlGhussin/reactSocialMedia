@@ -16,7 +16,7 @@ const PostCard = ({
 
   const isOwner = author.id === currentUser.id;
   return (
-    <div className="bg-white mb-5 rounded-xl pb-4">
+    <div className="bg-card-bg mb-5 rounded-xl pb-4">
       <div className="flex items-center justify-between p-4 pb-0">
         <div className="flex items-center">
           <img
@@ -26,9 +26,9 @@ const PostCard = ({
                 : "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-High-Quality-Image.png"
             }
             alt=""
-            className="w-9 h-9 rounded-full"
+            className="w-9 h-9 rounded-full bg-main-bg"
           />
-          <p className="text-gray-800 font-medium ml-2">
+          <p className="text-main-text font-medium ml-2">
             {author.name}{" "}
             <span className="text-gray-400 sm:ml-0 md:ml-1">{created_at}</span>
             <span className="block text-sm leading-6 text-gray-400 sm:ml-0 md:ml-1">
@@ -43,9 +43,9 @@ const PostCard = ({
         )}
       </div>
       <div className="pl-8 xl:pl-16 pr-4 pt-2">
-        <p className="w-auto font-medium text-gray-800 ">{body}</p>
+        <p className="w-auto font-medium text-main-text ">{body}</p>
         <img
-          className="rounded-2xl border border-main-bg my-3 mr-2 w-full"
+          className="rounded-2xl border bg-main-bg border-light-border my-3 mr-2 w-full"
           src={image || ""}
           alt=""
         />

@@ -30,7 +30,7 @@ export default function ThreeDotsMenu({ post }: ThreeDotsMenuProps) {
           e.stopPropagation();
           setOpen(!open);
         }}
-        className="p-2 rounded-full hover:bg-gray-200 cursor-pointer"
+        className="p-2 rounded-full hover:bg-main-bg cursor-pointer"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -46,20 +46,20 @@ export default function ThreeDotsMenu({ post }: ThreeDotsMenuProps) {
       {open && (
         <AnimatePresence>
           <motion.div
-            className="absolute right-0 mt-1 w-32 bg-white border-2 border-primary rounded shadow-md z-10 "
+            className="absolute right-0 mt-1 w-32 bg-card-bg border-2 border-primary rounded shadow-md z-10 "
             initial={{ opacity: 0, scale: 0.75 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.75 }}
             transition={{ duration: 0.25 }}
           >
             <button
-              className="w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer border-b border-gray-100"
+              className="w-full text-left px-4 py-2 hover:bg-main-bg cursor-pointer border-b border-card-bg"
               onClick={editPostHandler}
             >
               Edit
             </button>
             <button
-              className="w-full text-left px-4 py-2 hover:bg-gray-100 text-red-600 cursor-pointer"
+              className="w-full text-left px-4 py-2 hover:bg-main-bg text-red-600 cursor-pointer"
               onClick={deletePostHandler}
             >
               Delete

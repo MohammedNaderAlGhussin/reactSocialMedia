@@ -46,7 +46,7 @@ const EditForm = ({ post, onFinish }: EditFormProps) => {
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 mt-3">
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
