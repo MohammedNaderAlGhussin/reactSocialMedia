@@ -54,11 +54,11 @@ const Profile = () => {
                   </li>
                 </ul>
               </div>
-              <div className="flex gap-3 mt-3">
-                <button className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-hv duration-300 cursor-pointer">
+              <div className="flex gap-3 mt-3 w-[234px]">
+                <button className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-hv duration-300 cursor-pointer text-sm md:text-md ">
                   Edit Profile
                 </button>
-                <button className="bg-main-bg  px-4 py-2 rounded-md hover:bg-gray-400 hover:text-white cursor-pointer duration-300">
+                <button className="bg-main-bg  px-4 py-2 rounded-md hover:bg-gray-400 hover:text-white cursor-pointer duration-300 text-sm md:text-md">
                   Share Profile
                 </button>
               </div>
