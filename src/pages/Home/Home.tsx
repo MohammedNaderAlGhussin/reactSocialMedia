@@ -24,9 +24,7 @@ const Home = () => {
     if (!post.trim() && !image) return;
 
     console.log(post);
-    const result = await dispatch(
-      createPost({ body: post, imgageFile: image })
-    );
+    const result = await dispatch(createPost({ body: post, imageFile: image }));
 
     if (createPost.fulfilled.match(result)) {
       dispatch(

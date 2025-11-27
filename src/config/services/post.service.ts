@@ -11,8 +11,8 @@ export const PostService = {
     const formData = new FormData();
     formData.append("body", payload.body);
 
-    if (payload.imgageFile) {
-      formData.append("image", payload.imgageFile);
+    if (payload.imageFile) {
+      formData.append("image", payload.imageFile);
     }
     const res = await api.post("/posts", formData, {
       headers: {

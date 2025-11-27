@@ -17,7 +17,7 @@ export interface Post {
 
 export interface CreatePostPayload {
   body: string;
-  imgageFile?: File | null;
+  imageFile?: File | null;
 }
 
 export interface UpdatePostPayload {
