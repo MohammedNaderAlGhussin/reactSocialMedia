@@ -19,7 +19,7 @@ const ThemeToggle = () => {
   return (
     <motion.button
       onClick={() => setDark(!dark)}
-      className="p-2 rounded-full text-primary border-2 border-light-border hover:bg-primary-hv hover:text-white duration-300"
+      className="p-2 rounded-full text-primary border-2 border-light-border hover:bg-primary-hv hover:text-white duration-300 cursor-pointer"
       whileTap={{ scale: 0.9 }}
       aria-label="Toggle dark mode"
     >
