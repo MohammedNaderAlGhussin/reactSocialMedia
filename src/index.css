@@ -9,12 +9,14 @@
 */
 
 @theme {
+  /* Light mode */
   /* Primary Colors */
   --color-primary: #6366f1; /* Main action buttons, active navigation items, links, */
   --color-primary-hv: #8b5cf6; /* Hover states */
 
   /* Background Colors */
   --color-main-bg: #f0f2f5; /* Main page background on all pages */
+  --color-card-bg: #ffffff;
 
   /* Text Colors */
   --color-main-text: #111827; /* Primary text (usernames, post content, main labels) */
@@ -52,7 +54,7 @@
     @apply bg-linear-to-r from-primary to-primary-hv;
   }
   .form-container {
-    @apply bg-white flex flex-col justify-center container gap-5 mx-auto rounded-xl p-5 md:p-10 w-4/5 sm:w-2/3 md:w-3/5 lg:w-4/10 xl:w-3/9;
+    @apply bg-card-bg flex flex-col justify-center container gap-5 mx-auto rounded-xl p-5 md:p-10 w-4/5 sm:w-2/3 md:w-3/5 lg:w-4/10 xl:w-3/9;
   }
   .form-title {
     @apply text-main-text text-2xl font-bold;
@@ -82,6 +84,12 @@
   }
 }
 @layer utilities {
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--placeholder-color);
+    opacity: 1;
+  }
+
   input:focus::placeholder,
   textarea:focus::placeholder {
     opacity: 0;
@@ -90,14 +98,42 @@
 }
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --placeholder-color: #6b7280; /* gray for light mode */
 }
+
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   padding: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #f0f2f5;
+  background-color: var(--color-main-bg);
+  color: var(--color-main-text);
+}
+
+html {
+  transition: background-color 0.3s, color 0.3s;
+}
+.dark {
+  /* Main BG */
+  --color-main-bg: #0f172a; /* page background */
+
+  /* Card / white sections */
+  --color-card-bg: #1e293b; /* nav bar, posts, modal */
+
+  /* Text */
+  --color-main-text: #f1f5f9;
+  --color-sec-text: #94a3b8;
+
+  /* Borders */
+  --color-light-border: #334155;
+
+  /* Buttons */
+  --color-primary: #818cf8;
+  --color-primary-hv: #a78bfa;
+
+  --placeholder-color: #cbd5e1; /* light gray for dark mode */
 }
