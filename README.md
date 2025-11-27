@@ -1,4 +1,3 @@
-
 # 🌐 Social Media App (Tarmeez Academy API)
 
 A fully responsive **front-end social media website** built from **zero**, using the **Tarmeez Academy learning API**.
@@ -10,10 +9,10 @@ Designed, structured, and implemented entirely by me (**Front-End React Develope
 
 This is a feature-rich social media interface that interacts with a shared learning API, meaning:
 
-* The API is publicly accessible for learning purposes.
-* Many users already exist and use the API — so you’ll see **real posts from others** and multiple accounts.
-* The backend behavior (e.g., default "hello world") is part of the API’s learning environment.
-* This project focuses on the **client-side implementation, design, state structure, and UI logic**.
+- The API is publicly accessible for learning purposes.
+- Many users already exist and use the API — so you’ll see **real posts from others** and multiple accounts.
+- The backend behavior (e.g., default "hello world") is part of the API’s learning environment.
+- This project focuses on the **client-side implementation, design, state structure, and UI logic**.
 
 ---
 
@@ -48,25 +47,26 @@ This is a feature-rich social media interface that interacts with a shared learn
 
 ✅ Every major feature has:
 
-1. A dedicated **slice** for its UI state
-2. A separate **async thunk** for API actions
-3. Fully defined **TypeScript types for payloads & responses**
+1. Fully **API service modules** for Authentcation, Authorization and **CRUD** Posts requests
+2. A dedicated **slice** for its UI state
+3. A separate **async thunk** for API actions
+4. Fully defined **TypeScript types for payloads & responses**
 
 This separation provides:
 
-* **Clean scalability** ✅
-* **Easy modification** ✅
-* **Safe typing & validation** ✅
-* **Readable and testable code** ✅
-* **No mixed logic or tangled files** ✅
+- **Clean scalability** ✅
+- **Easy modification** ✅
+- **Safe typing & validation** ✅
+- **Readable and testable code** ✅
+- **No mixed logic or tangled files** ✅
 
 ---
 
 ## 🔐 Authentication & Authorization
 
-* Login and register implemented using **Redux Toolkit async thunks**
-* Token and user data are **securely saved in localStorage**
-* Routes are protected — unauthenticated users **cannot visit**:
+- Login and register implemented using **Redux Toolkit async thunks**
+- Token and user data are **securely saved in localStorage**
+- Routes are protected — unauthenticated users **cannot visit**:
 
 ```
 /home
@@ -81,32 +81,32 @@ Implemented using a reusable `ProtectedRoute` component powered by React Router.
 
 | Feature                                            | Status |
 | -------------------------------------------------- | ------ |
-| Login & Registration                               | ✅      |
-| Token Storage (localStorage)                       | ✅      |
-| Fetch All Posts                                    | ✅      |
-| Create a Post (with text or image)                 | ✅      |
-| Edit & Delete Posts                                | ✅      |
-| Edit/Delete option shown **only for user’s posts** | ✅      |
-| Prevent unauthorized post modification             | ✅      |
-| Comments UI                                        | ✅      |
-| Pagination support                                 | ✅      |
-| Image Upload                                       | ✅      |
-| Fully Typed Redux Slices & API Responses           | ✅      |
-| Custom Global Hooks (`src/hooks.ts`)               | ✅      |
-| Protected Routes                                   | ✅      |
-| Reusable UI Components                             | ✅      |
-| Toast feedback for all actions                     | ✅      |
-| Responsive UI (mobile/tablet/desktop)              | ✅      |
-| Animations (Framer Motion)                         | ✅      |
-| `.env` config with TypeScript definitions          | ✅      |
+| Login & Registration                               | ✅     |
+| Token Storage (localStorage)                       | ✅     |
+| Fetch All Posts                                    | ✅     |
+| Create a Post (with text or image)                 | ✅     |
+| Edit & Delete Posts                                | ✅     |
+| Edit/Delete option shown **only for user’s posts** | ✅     |
+| Prevent unauthorized post modification             | ✅     |
+| Comments UI                                        | ✅     |
+| Pagination support                                 | ✅     |
+| Image Upload                                       | ✅     |
+| Fully Typed Redux Slices & API Responses           | ✅     |
+| Custom Global Hooks (`src/hooks.ts`)               | ✅     |
+| Protected Routes                                   | ✅     |
+| Reusable UI Components                             | ✅     |
+| Toast feedback for all actions                     | ✅     |
+| Responsive UI (mobile/tablet/desktop)              | ✅     |
+| Animations (Framer Motion)                         | ✅     |
+| `.env` config with TypeScript definitions          | ✅     |
 
 ### 🧠 Additional logic included:
 
-* UI hides edit/delete actions for posts not belonging to the logged-in user
-* Only logged-in user’s posts show management options
-* Toast notifications improve user experience
-* Full responsiveness using **Tailwind media queries**
-* Global feature selectors via custom hooks
+- UI hides edit/delete actions for posts not belonging to the logged-in user
+- Only logged-in user’s posts show management options
+- Toast notifications improve user experience
+- Full responsiveness using **Tailwind media queries**
+- Global feature selectors via custom hooks
 
 ---
 
@@ -114,19 +114,19 @@ Implemented using a reusable `ProtectedRoute` component powered by React Router.
 
 **Core Stack:**
 
-* ⚛️ **React (Initialized with Vite)** — project bootstrapped using `npm create vite`, not `npx`
-* 🟦 **TypeScript** — everything is strongly typed (API responses, Redux state, payloads)
-* 🎨 **TailwindCSS v4+**
-* 🧭 **React Router** — public + protected routing
-* 🧰 **Redux Toolkit** — state management, slices, async thunks
-* 🔥 **Axios** — API calls & error handling
-* 🎞️ **Framer Motion** — UI animations
-* 🍞 **Local Storage** — token and user data persistence
+- ⚛️ **React (Initialized with Vite)** — project bootstrapped using `npm create vite`, not `npx`
+- 🟦 **TypeScript** — everything is strongly typed (API responses, Redux state, payloads)
+- 🎨 **TailwindCSS v4+**
+- 🧭 **React Router** — public + protected routing
+- 🧰 **Redux Toolkit** — state management, slices, async thunks
+- 🔥 **Axios** — API calls & error handling
+- 🎞️ **Framer Motion** — UI animations
+- 🍞 **Local Storage** — token and user data persistence
 
 **Development Environment:**
 
-* ⚡ Built with **Vite**
-* 🌍 Deployed on **Vercel**
+- ⚡ Built with **Vite**
+- 🌍 Deployed on **Vercel**
 
 ---
 
@@ -161,7 +161,7 @@ The app is deployed using **Vercel** and works live with real users from the sha
 
 ## 🖼️ Screenshots
 
-*(Screenshots coming soon — placeholder section for UI preview)*
+_(Screenshots coming soon — placeholder section for UI preview)_
 
 ---
 
@@ -174,17 +174,17 @@ The app is deployed using **Vercel** and works live with real users from the sha
 
 ## 🏆 What makes this project special
 
-* 💼 **Professional, modular folder architecture**
-* 🧠 **Redux slices are split into logical domains**
-* 🟦 **All API payloads & state are well-typed**
-* 🔐 **Page access is restricted when not authenticated**
-* ♻️ **Reusable UI/logic components**
-* 🧩 **Edit/Delete actions shown only for user-owned posts**
-* 💬 **Comments UI included**
-* 📄 **Pagination support**
-* 🎞️ **Smooth animations**
-* 🚀 **Scalable structure for future enhancement**
-* 🔒 Environment variables defined but **not committed**, typed using `.env.d.ts`
+- 💼 **Professional, modular folder architecture**
+- 🧠 **Redux slices are split into logical domains**
+- 🟦 **All API payloads & state are well-typed**
+- 🔐 **Page access is restricted when not authenticated**
+- ♻️ **Reusable UI/logic components**
+- 🧩 **Edit/Delete actions shown only for user-owned posts**
+- 💬 **Comments UI included**
+- 📄 **Pagination support**
+- 🎞️ **Smooth animations**
+- 🚀 **Scalable structure for future enhancement**
+- 🔒 Environment variables defined but **not committed**, typed using `.env.d.ts`
 
 ---
 
@@ -192,12 +192,12 @@ The app is deployed using **Vercel** and works live with real users from the sha
 
 This project is ready to scale into:
 
-* Likes & reactions
-* Follow / Unfollow UI
-* Notifications panel
-* Real-time updates
-* Post tagging system
-* Content publishing dashboard
+- Likes & reactions
+- Follow / Unfollow UI
+- Notifications panel
+- Real-time updates
+- Post tagging system
+- Content publishing dashboard
 
 ---
 
