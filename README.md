@@ -92,10 +92,11 @@ Implemented using a reusable `ProtectedRoute` component powered by React Router.
 | Pagination support                                 | ✅     |
 | Image Upload                                       | ✅     |
 | Fully Typed Redux Slices & API Responses           | ✅     |
-| Custom Global Hooks (`src/hooks.ts`)               | ✅     |
+| Custom Global Hooks (`src/app/hooks.ts`)           | ✅     |
 | Protected Routes                                   | ✅     |
 | Reusable UI Components                             | ✅     |
 | Toast feedback for all actions                     | ✅     |
+| Dark Mode support                                  | ✅     |
 | Responsive UI (mobile/tablet/desktop)              | ✅     |
 | Animations (Framer Motion)                         | ✅     |
 | `.env` config with TypeScript definitions          | ✅     |
@@ -176,6 +177,7 @@ _(Screenshots coming soon — placeholder section for UI preview)_
 
 - 💼 **Professional, modular folder architecture**
 - 🧠 **Redux slices are split into logical domains**
+- 🌙 **Dark mode support** — Users can switch between light and dark themes seamlessly
 - 🟦 **All API payloads & state are well-typed**
 - 🔐 **Page access is restricted when not authenticated**
 - ♻️ **Reusable UI/logic components**
