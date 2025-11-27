@@ -128,7 +128,7 @@ const Login = () => {
   });
 
   return (
-    <main className="linear h-screen flex justify-center items-center">
+    <main className="linear min-h-screen flex justify-center items-center">
       <div className="form-container h-[670px] relative">
         <div className=" absolute top-3 right-3 ">
           <ThemeToggle />
