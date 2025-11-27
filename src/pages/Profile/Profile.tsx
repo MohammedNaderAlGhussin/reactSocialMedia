@@ -70,7 +70,7 @@ const Profile = () => {
             {userPosts.length > 0 ? (
               userPosts
             ) : (
-              <p className="bg-white mb-5 rounded-xl cursor-pointer p-4 text-center text-gray-500 text-xl">
+              <p className="bg-card-bg mb-5 rounded-xl cursor-pointer p-4 text-center text-gray-500 text-xl">
                 No posts yet
               </p>
             )}
