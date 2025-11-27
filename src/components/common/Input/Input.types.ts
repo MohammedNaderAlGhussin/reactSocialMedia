@@ -9,4 +9,5 @@ export interface InputProps {
   icon?: React.ElementType;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   error?: string | null;
+  isPassword?: boolean
 }
