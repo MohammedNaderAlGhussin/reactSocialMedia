@@ -132,6 +132,7 @@ const Register = () => {
       value: form.password,
       onChange: handleChange,
       error: errors.password,
+      isPassword: true,
     },
     {
       id: "confrim-password",
@@ -143,6 +144,7 @@ const Register = () => {
       value: form.confirmPassword,
       onChange: handleChange,
       error: errors.confirmPassword,
+      isPassword: true,
     },
   ];
 

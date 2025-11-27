@@ -61,7 +61,7 @@ const Login = () => {
 
     console.log(res);
     console.log(res.payload);
-    
+
     if (loginThunk.fulfilled.match(res)) {
       console.log("LOGIN SUCCESS __");
       navigate("/home");
@@ -98,6 +98,7 @@ const Login = () => {
       value: formData.password,
       onChange: handleChange,
       error: errors.password || null,
+      isPassword: true,
     },
   ];
   const checkbox: InputProps = {
