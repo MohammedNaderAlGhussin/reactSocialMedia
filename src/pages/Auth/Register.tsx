@@ -23,6 +23,7 @@ import UsernameIcon from "../../components/icons/UsernameIcon";
 import PasswordIcon from "../../components/icons/PasswordIcon";
 import ConfirmPasswordIcon from "../../components/icons/ConfirmPasswordIcon";
 import { showToast } from "../../features/toast/toastSlice";
+import ThemeToggle from "../../components/common/ThemeToggle/ThemeToggle ";
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -182,7 +183,10 @@ const Register = () => {
 
   return (
     <main className="linear h-screen flex justify-center items-center">
-      <div className="form-container">
+      <div className="form-container relative" >
+        <div className=" absolute top-3 right-3 ">
+          <ThemeToggle />
+        </div>
         <div className="flex flex-col items-center justify-center">
           <Logo />
           <h1 className="form-title">Create an account</h1>

@@ -19,6 +19,7 @@ import { useState } from "react";
 import { loginThunk } from "../../features/auth/authThunk";
 import ErrorMsg from "../../components/common/Error/ErrorMsg";
 import { showToast } from "../../features/toast/toastSlice";
+import ThemeToggle from "../../components/common/ThemeToggle/ThemeToggle ";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -128,7 +129,10 @@ const Login = () => {
 
   return (
     <main className="linear h-screen flex justify-center items-center">
-      <div className="form-container h-[670px]">
+      <div className="form-container h-[670px] relative">
+        <div className=" absolute top-3 right-3 ">
+          <ThemeToggle />
+        </div>
         <div className="flex flex-col items-center justify-center">
           <Logo />
           <h1 className="form-title">SocailPluse</h1>
