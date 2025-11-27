@@ -138,8 +138,8 @@ Implemented using a reusable `ProtectedRoute` component powered by React Router.
 ### 1️⃣ Clone the project
 
 ```
-git clone <repo_url>
-cd <repo_name>
+git clone https://github.com/MohammedNaderAlGhussin/reactSocialMedia.git
+cd reactSocialMedia
 ```
 
 ### 2️⃣ Install dependencies
