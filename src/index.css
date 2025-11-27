@@ -132,8 +132,9 @@ html {
   --color-light-border: #334155;
 
   /* Buttons */
-  --color-primary: #818cf8;
-  --color-primary-hv: #a78bfa;
+  
+  /* --color-primary: #818cf8;
+  --color-primary-hv: #a78bfa; */
 
   --placeholder-color: #cbd5e1; /* light gray for dark mode */
 }
