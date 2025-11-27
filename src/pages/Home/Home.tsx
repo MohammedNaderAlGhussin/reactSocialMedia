@@ -4,8 +4,20 @@ import Header from "../../components/layout/Header/Header";
 import PostsList from "../../components/Posts/PostsList";
 import { createPost } from "../../features/posts/postsThunk";
 import { showToast } from "../../features/toast/toastSlice";
+import type { AuthUser } from "../../config/types/auth.types";
 
 const Home = () => {
+  // getting user from LocalStorage
+  const currentUser = window.localStorage.getItem("user")
+    ? (JSON.parse(window.localStorage.getItem("user") as string) as AuthUser)
+    : null;
+
+  // Display User image and name in Post box
+  const avatarUrl =
+    currentUser && typeof currentUser.profile_image == "string"
+      ? currentUser.profile_image
+      : "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-High-Quality-Image.png";
+
   const dispatch = useAppDispatch();
   const { creating } = usePostsSelector();
   const [post, setPost] = useState("");
@@ -81,16 +93,12 @@ const Home = () => {
           {/* Post Box */}
           <div className=" pb-3 bg-white mb-5 rounded-xl">
             <div className="flex p-4">
-              <img
-                src="https://easykey.uk/images/vgift/barry-avatar-400.png"
-                alt=""
-                className="w-10 h-10 rounded-full"
-              />
+              <img src={avatarUrl} alt="" className="w-9 h-9 rounded-full" />
               <textarea
                 value={post}
                 onChange={handelChange}
                 className="w-full  text-gray-900 p-2 resize-none focus:outline-none text-"
-                placeholder="What's in your mind?"
+                placeholder={`What's in your mind ${currentUser?.name}?`}
               ></textarea>
             </div>
             <div className="flex items-center p-4 w-full">
