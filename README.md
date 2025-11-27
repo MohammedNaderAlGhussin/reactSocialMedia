@@ -1,7 +1,3 @@
-Here is your **professional, production-ready, detailed, recruiter-level README.md** 🚀
-Copy and paste this into your repo root as `README.md`:
-
----
 
 # 🌐 Social Media App (Tarmeez Academy API)
 
