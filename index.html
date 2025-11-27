@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,3 +11,12 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
+<script>
+  // getting the theme from localstorage onload.
+  if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+</script>
