@@ -1,5 +1,4 @@
-
-const Profile = () => {
+const ProfileIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16,6 +15,6 @@ const Profile = () => {
       />
     </svg>
   );
-}
+};
 
-export default Profile
+export default ProfileIcon;
