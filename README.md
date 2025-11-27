@@ -43,8 +43,9 @@ This is a feature-rich social media interface that interacts with a shared learn
  ┃   ┣ 📜postsSlice.ts      → Fetching, Edit, Delete reducers
  ┃   ┣ 📜postsThunk.ts      → Async API calls (get posts, create, delete, edit, upload images)
  ┃   ┗ 📜posts.types.ts     → Post object, author, payload types
- ┣ 📜hooks.ts           → Custom reusable hooks (selectors, filters, modals, form handling)
- ┗ 📜routes             → Protected & public routing
+ ┗ 📂routes
+     ┣ 📜AppRoutes.ts       → Main routing file (public + protected routes)
+     ┗ 📜ProtectedRoutes.ts → Wrapper for protected route logic (auth guard)
 ```
 
 ### 🔍 Why this structure matters?
