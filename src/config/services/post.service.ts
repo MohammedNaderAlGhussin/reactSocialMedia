@@ -2,9 +2,16 @@ import type { CreatePostPayload, UpdatePostPayload } from "../types/post.types";
 import { api } from "./../axios.config";
 
 export const PostService = {
-  getPosts: async () => {
-    const res = await api.get("/posts");
-    return res.data.data;
+  getPosts: async (page: number, limit: number = 15) => {
+    const res = await api.get("/posts", {
+      params: { page, limit },
+    });
+    console.log(res);
+    return {
+      posts: res.data.data,
+      current_page: res.data.meta.current_page,
+      last_page: res.data.meta.last_page,
+    };
   },
 
   createPost: async (payload: CreatePostPayload) => {
