@@ -6,7 +6,6 @@ export const PostService = {
     const res = await api.get("/posts", {
       params: { page, limit },
     });
-    console.log(res);
     return {
       posts: res.data.data,
       current_page: res.data.meta.current_page,
