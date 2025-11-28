@@ -8,9 +8,9 @@ import type {
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
-  async (_, thunkAPI) => {
+  async (page: number, thunkAPI) => {
     try {
-      const res = await PostService.getPosts();
+      const res = await PostService.getPosts(page, 15);
       return res;
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
