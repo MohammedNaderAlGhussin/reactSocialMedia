@@ -28,6 +28,7 @@ export const postsSlice = createSlice({
         state.error = null; // reset before new request
 
         if (page == 1) {
+          state.loadingMore = false;
           state.loading = true;
         } else {
           state.loadingMore = true;
