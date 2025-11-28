@@ -8,6 +8,7 @@ export interface PostsState {
   deleting: boolean;
   error: string | null;
   // for pagenation.
+  loadingMore: boolean;
   page: number;
   lastPage: number;
   hasMore: boolean;
