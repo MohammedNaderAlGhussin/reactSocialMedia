@@ -5,6 +5,7 @@ import PostsList from "../../components/Posts/PostsList";
 import { createPost } from "../../features/posts/postsThunk";
 import { showToast } from "../../features/toast/toastSlice";
 import type { AuthUser } from "../../config/types/auth.types";
+import BackToTopButton from "../../components/common/BackToTopButton/BackToTopButton";
 
 const Home = () => {
   // getting user from LocalStorage
@@ -152,6 +153,7 @@ const Home = () => {
           {/*== Post Box ==*/}
           {/* PostsList */}
           <PostsList />
+          <BackToTopButton />
           {/*== PostsList ==*/}
         </div>
         {/*== Middle ==*/}
