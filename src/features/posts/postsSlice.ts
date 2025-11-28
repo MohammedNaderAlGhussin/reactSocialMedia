@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createPost, deletePost, fetchPosts, updatePost } from "./postsThunk";
 import type { PostsState } from "./types";
+import type { Post } from "../../config/types/post.types";
 
 const initialState: PostsState = {
   posts: [],
@@ -9,6 +10,9 @@ const initialState: PostsState = {
   updating: false,
   deleting: false,
   error: null,
+  page: 1,
+  lastPage: 1,
+  hasMore: true,
 };
 
 export const postsSlice = createSlice({
@@ -24,7 +28,24 @@ export const postsSlice = createSlice({
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.loading = false;
-        state.posts = action.payload;
+
+        // merging the posts not updating and checking for any duplicates, when getting more posts (pagenatoin)
+        // post1, post2, post3, post3, post4, post5 --> the following code removes duplicates 
+        const newPosts = action.payload.posts;
+
+        state.posts = [
+          ...state.posts,
+          ...newPosts.filter(
+            (newPost: Post) =>
+              !state.posts.some(
+                (existingPost) => existingPost.id === newPost.id
+              )
+          ),
+        ];
+
+        state.page = action.payload.current_page;
+        state.lastPage = action.payload.last_page;
+        state.hasMore = action.payload.current_page < action.payload.last_page; // check if posts ended
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.loading = false;
