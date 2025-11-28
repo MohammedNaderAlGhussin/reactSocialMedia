@@ -42,8 +42,8 @@ const PostCard = ({
           />
         )}
       </div>
-      <div className="pl-8 xl:pl-16 pr-4 pt-2">
-        <p className="w-auto font-medium text-main-text ">{body}</p>
+      <div className="pl-8 xl:pl-16 pr-4 pt-2 overflow-hidden">
+        <p className="w-full font-medium text-main-text ">{body}</p>
         <img
           className="rounded-2xl border bg-main-bg border-light-border my-3 mr-2 w-full"
           src={image || ""}
