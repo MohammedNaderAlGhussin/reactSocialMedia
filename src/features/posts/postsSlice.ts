@@ -10,6 +10,7 @@ const initialState: PostsState = {
   updating: false,
   deleting: false,
   error: null,
+  loadingMore: false,
   page: 1,
   lastPage: 1,
   hasMore: true,
@@ -22,26 +23,31 @@ export const postsSlice = createSlice({
   extraReducers: (builder) => {
     // Fetch Posts
     builder
-      .addCase(fetchPosts.pending, (state) => {
-        state.loading = true;
+      .addCase(fetchPosts.pending, (state, action) => {
+        const page = action.meta.arg;
         state.error = null; // reset before new request
+
+        if (page == 1) {
+          state.loading = true;
+        } else {
+          state.loadingMore = true;
+        }
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.loading = false;
+        state.loadingMore = false;
 
         // merging the posts not updating and checking for any duplicates, when getting more posts (pagenatoin)
-        // post1, post2, post3, post3, post4, post5 --> the following code removes duplicates 
+        // post1, post2, post3, post3, post4, post5 --> the following code removes duplicates
+
         const newPosts = action.payload.posts;
 
-        state.posts = [
-          ...state.posts,
-          ...newPosts.filter(
-            (newPost: Post) =>
-              !state.posts.some(
-                (existingPost) => existingPost.id === newPost.id
-              )
-          ),
-        ];
+        const uniquePosts = newPosts.filter(
+          (newPost: Post) =>
+            !state.posts.some((existing) => existing.id === newPost.id)
+        );
+
+        state.posts = [...state.posts, ...uniquePosts];
 
         state.page = action.payload.current_page;
         state.lastPage = action.payload.last_page;
@@ -49,6 +55,7 @@ export const postsSlice = createSlice({
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.loading = false;
+        state.loadingMore = false;
         state.error =
           (action.payload as string) || "ERROR: Failed to fetch posts";
       });
