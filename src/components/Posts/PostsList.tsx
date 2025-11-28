@@ -6,7 +6,8 @@ import { fetchPosts } from "../../features/posts/postsThunk";
 import ErrorMsg from "../common/Error/ErrorMsg";
 
 const PostsList = () => {
-  const { loading, posts, error, page, hasMore } = usePostsSelector();
+  const { loading, loadingMore, posts, error, page, hasMore } =
+    usePostsSelector();
   console.log(posts);
   const dispatch = useAppDispatch();
 
@@ -18,21 +19,18 @@ const PostsList = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (
+      const nearBottom =
         window.innerHeight + document.documentElement.scrollTop + 100 >=
-        document.documentElement.scrollHeight
-      ) {
-        if (!loading && hasMore) {
-          dispatch(fetchPosts(page + 1));
-        }
+        document.documentElement.scrollHeight;
+      if (nearBottom && !loadingMore && hasMore) {
+        dispatch(fetchPosts(page + 1));
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, hasMore, page]);
-
+  }, [loadingMore, hasMore, page, dispatch]);
+  console.log(loadingMore);
 
   const postsList = posts.map((post) => <PostCard key={post.id} {...post} />);
 
@@ -40,7 +38,17 @@ const PostsList = () => {
     <div className="pb-5">
       {loading && posts.length === 0 && <Loader />}
       {postsList}
+
+      {/* infinite scroll loading indicator */}
+      {loadingMore && <Loader />}
+
       {error && <ErrorMsg message={error} />}
+
+      {!loadingMore && !hasMore && (
+        <p className="text-center py-4 text-sec-text">
+          🚀 You are all caught up — no more posts to show
+        </p>
+      )}
     </div>
   );
 };
