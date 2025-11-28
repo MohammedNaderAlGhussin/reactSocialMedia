@@ -8,7 +8,6 @@ import ErrorMsg from "../common/Error/ErrorMsg";
 const PostsList = () => {
   const { loading, loadingMore, posts, error, page, hasMore } =
     usePostsSelector();
-  console.log(posts);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -22,6 +21,7 @@ const PostsList = () => {
       const nearBottom =
         window.innerHeight + document.documentElement.scrollTop + 100 >=
         document.documentElement.scrollHeight;
+
       if (nearBottom && !loadingMore && hasMore) {
         dispatch(fetchPosts(page + 1));
       }
@@ -30,7 +30,6 @@ const PostsList = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [loadingMore, hasMore, page, dispatch]);
-  console.log(loadingMore);
 
   const postsList = posts.map((post) => <PostCard key={post.id} {...post} />);
 
