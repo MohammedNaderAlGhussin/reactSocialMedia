@@ -8,6 +8,7 @@ import {
 import { useCommentsSelector } from "../../../app/hooks";
 import Loader from "../../common/Loader/Loader";
 import ErrorMsg from "../../common/Error/ErrorMsg";
+import { showToast } from "../../../features/toast/toastSlice";
 
 const Comment = ({
   postId,
@@ -30,7 +31,12 @@ const Comment = ({
     const result = await dispatch(createPostComment({ postId, body: input }));
 
     if (createPostComment.fulfilled.match(result)) {
+      dispatch(
+        showToast({ type: "success", message: "Comment added successfully" })
+      );
       setInput("");
+    } else {
+      dispatch(showToast({ type: "error", message: "Something went wrong!" }));
     }
   };
 
