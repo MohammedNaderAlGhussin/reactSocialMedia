@@ -26,3 +26,21 @@ export interface UpdatePostPayload {
   imageFile?: File | null;
   imageUrl?: string | null;
 }
+
+export interface CommentAuthor {
+  id: number;
+  username: string;
+  name: string;
+  profile_image: string | null;
+}
+
+export interface Comment {
+  id: number;
+  body: string;
+  author: CommentAuthor;
+}
+
+export interface CreateCommentPayload {
+  postId: number;
+  body: string;
+}
