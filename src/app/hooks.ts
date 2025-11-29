@@ -16,3 +16,8 @@ export const useModalSelector = () => useAppSelector((state) => state.modal);
 
 // Custom hook to select taost state
 export const useToastSelector = () => useAppSelector((state) => state.taost);
+
+// Custom hook to select userProfile state
+
+export const useUserProfileSelector = () =>
+  useAppSelector((state) => state.userProfile);
