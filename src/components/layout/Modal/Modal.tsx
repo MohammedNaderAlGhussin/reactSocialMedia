@@ -4,6 +4,7 @@ import { closeModal } from "../../../features/modal/modalSlice";
 import DeleteConfirm from "../../Posts/DeleteConfirm";
 import EditForm from "../../Posts/EditForm";
 import { useEffect } from "react";
+import Comment from "../../Posts/Comment/Comment";
 
 const Modal = () => {
   const { isOpened, type, payload } = useModalSelector();
@@ -54,6 +55,13 @@ const Modal = () => {
               <DeleteConfirm
                 postId={payload}
                 onFinish={() => dispatch(closeModal())}
+              />
+            )}
+
+            {type === "comments" && (
+              <Comment
+                postId={payload}
+                onClose={() => dispatch(closeModal())}
               />
             )}
           </motion.div>
