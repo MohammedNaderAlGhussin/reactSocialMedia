@@ -10,6 +10,7 @@ const PostsList = () => {
     usePostsSelector();
   const dispatch = useAppDispatch();
 
+  console.log(posts);
   useEffect(() => {
     if (posts.length === 0) {
       dispatch(fetchPosts(1));
