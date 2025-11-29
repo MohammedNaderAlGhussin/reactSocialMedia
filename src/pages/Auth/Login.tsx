@@ -135,7 +135,7 @@ const Login = () => {
         </div>
         <div className="flex flex-col items-center justify-center">
           <Logo />
-          <h1 className="form-title">SocailPluse</h1>
+          <h1 className="form-title">SocialPulse</h1>
           <p className="text-sec-text text-center text-md md:text-lg">
             Welcome back, please login to your account
           </p>
