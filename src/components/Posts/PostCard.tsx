@@ -19,19 +19,21 @@ const PostCard = ({
   return (
     <div className="bg-card-bg mb-5 rounded-xl pb-4">
       <div className="flex items-center justify-between p-4 pb-0">
-          <Link to={`/profile/${author.id}`}>
-        <div className="flex items-center">
-          <img
-            src={
-              typeof author.profile_image == "string"
-                ? author.profile_image
-                : "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-High-Quality-Image.png"
-            }
-            alt=""
-            className="w-9 h-9 rounded-full bg-main-bg"
-          />
-            <p className="text-main-text font-medium ml-2">
-              {author.name}
+        <Link to={`/profile/${author.id}`}>
+          <div className="flex items-center">
+            <img
+              src={
+                typeof author.profile_image == "string"
+                  ? author.profile_image
+                  : "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-High-Quality-Image.png"
+              }
+              alt=""
+              className="w-9 h-9 rounded-full bg-main-bg  hover:scale-110 transition-transform duration-200 border border-light-border hover:border-primary"
+            />
+            <p className="text-main-text font-medium ml-2 ">
+              <span className=" hover:text-primary hover:underline transition-colors duration-200">
+                {author.name}
+              </span>
               <span className="text-gray-400 sm:ml-0 md:ml-1">
                 {created_at}
               </span>
@@ -39,8 +41,8 @@ const PostCard = ({
                 @{author.username}
               </span>
             </p>
-        </div>
-          </Link>
+          </div>
+        </Link>
         {isOwner && (
           <ThreeDotsMenu
             post={{ id, body, image, author, created_at, comments_count }}
