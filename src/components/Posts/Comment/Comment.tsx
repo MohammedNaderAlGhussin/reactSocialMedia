@@ -31,7 +31,9 @@ const Comment = ({
 
     const result = await dispatch(createPostComment({ postId, body: input }));
 
-    if (createPostComment.fulfilled.match(result)) {
+      if (createPostComment.fulfilled.match(result)) {
+        // fetching post comments after creating one 
+      dispatch(fetchPostComments(postId));
       dispatch(
         showToast({ type: "success", message: "Comment added successfully" })
       );
