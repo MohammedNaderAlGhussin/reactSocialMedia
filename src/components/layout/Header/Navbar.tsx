@@ -9,6 +9,10 @@ import LogoutIcon from "../../icons/LogoutIcon";
 const Navbar = () => {
   const dispatch = useAppDispatch();
 
+  const currentUser = localStorage.getItem("user")
+    ? JSON.parse(window.localStorage.getItem("user")!)
+    : null;
+
   const handelLogOut = () => {
     dispatch(logoutThunk());
     dispatch(
@@ -22,7 +26,7 @@ const Navbar = () => {
         <NavLink to="/home" className="nav-link">
           <HomeIcon />
         </NavLink>
-        <NavLink to="/profile" className="nav-link">
+        <NavLink to={`/profile/${currentUser.id}`} className="nav-link">
           <ProfileIcon />
         </NavLink>
         <NavLink to="/" className="nav-link" onClick={handelLogOut}>
