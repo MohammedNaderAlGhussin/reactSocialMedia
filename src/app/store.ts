@@ -3,6 +3,7 @@ import postsReducer from "../features/posts/postsSlice";
 import authReducer from "../features/auth/authSlice";
 import modalReducer from "../features/modal/modalSlice";
 import toastReducer from "../features/toast/toastSlice";
+import userProfileReducer from "../features/userProfile/userProfileSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     auth: authReducer,
     modal: modalReducer,
     taost: toastReducer,
+    userProfile: userProfileReducer,
   },
 });
 
