@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import type { Post } from "../../config/types/post.types";
 import ThreeDotsMenu from "../common/ThreeDotsMenu/ThreeDotsMenu";
+import { useAppDispatch } from "../../app/hooks";
+import { openModal } from "../../features/modal/modalSlice";
 
 const PostCard = ({
   id,
@@ -10,12 +12,17 @@ const PostCard = ({
   created_at,
   comments_count,
 }: Post) => {
+  const dispatch = useAppDispatch();
   // getting user to display
   const currentUser = window.localStorage.getItem("user")
     ? JSON.parse(window.localStorage.getItem("user") as string)
     : null;
 
   const isOwner = author.id === currentUser.id;
+
+  const commentsHandler = () => {
+    dispatch(openModal({ type: "comments", payload: id }));
+  };
   return (
     <div className="bg-card-bg mb-5 rounded-xl pb-4">
       <div className="flex items-center justify-between p-4 pb-0">
@@ -56,15 +63,18 @@ const PostCard = ({
           src={image || ""}
           alt=""
         />
-        <div className="flex justify-around items-center">
-          <div className="flex items-center text-xs text-gray-400 hover:text-red-600 ">
+        <div className="flex justify-around text-[14px] items-center">
+          <div className="flex items-center  text-gray-400 hover:text-red-600 ">
             likes 12.3 k
           </div>
 
-          <div className="flex items-center  text-xs text-gray-400 hover:text-blue-400">
+          <div
+            className="flex items-center  text-gray-400 hover:text-blue-400 cursor-pointer"
+            onClick={commentsHandler}
+          >
             {comments_count || 0} comments
           </div>
-          <div className="flex items-center  text-xs text-gray-400 hover:text-blue-400">
+          <div className="flex items-center   text-gray-400 hover:text-blue-400">
             share
           </div>
         </div>
