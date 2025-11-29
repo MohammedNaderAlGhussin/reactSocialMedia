@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { Post } from "../../config/types/post.types";
 import ThreeDotsMenu from "../common/ThreeDotsMenu/ThreeDotsMenu";
 
@@ -18,6 +19,7 @@ const PostCard = ({
   return (
     <div className="bg-card-bg mb-5 rounded-xl pb-4">
       <div className="flex items-center justify-between p-4 pb-0">
+          <Link to={`/profile/${author.id}`}>
         <div className="flex items-center">
           <img
             src={
@@ -28,14 +30,17 @@ const PostCard = ({
             alt=""
             className="w-9 h-9 rounded-full bg-main-bg"
           />
-          <p className="text-main-text font-medium ml-2">
-            {author.name}{" "}
-            <span className="text-gray-400 sm:ml-0 md:ml-1">{created_at}</span>
-            <span className="block text-sm leading-6 text-gray-400 sm:ml-0 md:ml-1">
-              @{author.username}
-            </span>
-          </p>
+            <p className="text-main-text font-medium ml-2">
+              {author.name}
+              <span className="text-gray-400 sm:ml-0 md:ml-1">
+                {created_at}
+              </span>
+              <span className="block text-sm leading-6 text-gray-400 sm:ml-0 md:ml-1">
+                @{author.username}
+              </span>
+            </p>
         </div>
+          </Link>
         {isOwner && (
           <ThreeDotsMenu
             post={{ id, body, image, author, created_at, comments_count }}
