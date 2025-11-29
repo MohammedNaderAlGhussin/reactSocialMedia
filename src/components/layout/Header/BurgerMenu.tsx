@@ -6,6 +6,9 @@ const BurgerMenu = () => {
   const toggleMenu = () => {
     setShow(!show);
   };
+  const currntUser = localStorage.getItem("user")
+    ? JSON.parse(window.localStorage.getItem("user")!)
+    : null;
   return (
     <>
       <div className="relative md:hidden">
@@ -43,7 +46,7 @@ const BurgerMenu = () => {
             <Link to={"/home"} className="burger-menu-link">
               Home
             </Link>
-            <Link to={"/profile"} className="burger-menu-link">
+            <Link to={`/profile/${currntUser.id}`} className="burger-menu-link">
               Profile
             </Link>
             <Link to={"/"} className="burger-menu-link">
