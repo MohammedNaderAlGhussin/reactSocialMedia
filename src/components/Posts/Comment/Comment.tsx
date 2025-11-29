@@ -9,6 +9,7 @@ import { useCommentsSelector } from "../../../app/hooks";
 import Loader from "../../common/Loader/Loader";
 import ErrorMsg from "../../common/Error/ErrorMsg";
 import { showToast } from "../../../features/toast/toastSlice";
+import { Link } from "react-router-dom";
 
 const Comment = ({
   postId,
@@ -73,15 +74,17 @@ const Comment = ({
                   animate={{ opacity: 1 }}
                   className="flex gap-3 items-start bg-main-bg p-3 rounded-xl"
                 >
-                  <img
-                    src={
-                      typeof comment.author.profile_image == "string"
-                        ? comment.author.profile_image
-                        : "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-High-Quality-Image.png"
-                    }
-                    alt=""
-                    className="w-9 h-9 rounded-full bg-main-bg hover:scale-110 transition-transform duration-200 border border-light-border hover:border-primary"
-                  />
+                  <Link to={`/profile/${comment.author.id}`} onClick={onClose}>
+                    <img
+                      src={
+                        typeof comment.author.profile_image == "string"
+                          ? comment.author.profile_image
+                          : "https://www.pngall.com/wp-content/uploads/5/Profile-PNG-High-Quality-Image.png"
+                      }
+                      alt=""
+                      className="w-9 h-9 rounded-full bg-main-bg hover:scale-110 transition-transform duration-200 border border-light-border hover:border-primary"
+                    />
+                  </Link>
                   <div>
                     <p className="font-bold text-main-text">
                       {comment.author.username}
