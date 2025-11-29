@@ -1,4 +1,9 @@
-import type { CreatePostPayload, UpdatePostPayload } from "../types/post.types";
+import type {
+  Comment,
+  CreateCommentPayload,
+  CreatePostPayload,
+  UpdatePostPayload,
+} from "../types/post.types";
 import { api } from "./../axios.config";
 
 export const PostService = {
@@ -32,6 +37,8 @@ export const PostService = {
     const formData = new FormData();
     formData.append("body", payload.body);
 
+    // formData.append("_method", "put");
+
     if (payload.imageFile) {
       formData.append("image", payload.imageFile);
     } else if (payload.imageUrl) {
@@ -44,6 +51,18 @@ export const PostService = {
 
   deletePost: async (id: number) => {
     const res = await api.delete(`/posts/${id}`);
+    return res.data.data;
+  },
+
+  getCommentsForPost: async (postId: number): Promise<Comment[]> => {
+    const res = await api.get(`/posts/${postId}`);
+    return res.data.data.comments;
+  },
+
+  createComment: async (payload: CreateCommentPayload): Promise<Comment> => {
+    const res = await api.post(`/posts/${payload.postId}/comments`, {
+      body: payload.body,
+    });
     return res.data.data;
   },
 };
