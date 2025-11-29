@@ -13,7 +13,10 @@ const modalSlice = createSlice({
   reducers: {
     openModal: (
       state,
-      action: PayloadAction<{ type: "edit" | "delete"; payload?: unknown }>
+      action: PayloadAction<{
+        type: "edit" | "delete" | "comments";
+        payload?: unknown;
+      }>
     ) => {
       state.isOpened = true;
       state.type = action.payload.type;
