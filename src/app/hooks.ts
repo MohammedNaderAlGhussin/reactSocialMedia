@@ -18,6 +18,9 @@ export const useModalSelector = () => useAppSelector((state) => state.modal);
 export const useToastSelector = () => useAppSelector((state) => state.taost);
 
 // Custom hook to select userProfile state
-
 export const useUserProfileSelector = () =>
   useAppSelector((state) => state.userProfile);
+
+// Custom hook to select Comments state
+export const useCommentsSelector = () =>
+  useAppSelector((state) => state.comments);
