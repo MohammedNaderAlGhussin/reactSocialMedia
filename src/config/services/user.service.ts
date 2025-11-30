@@ -11,6 +11,6 @@ export const UserService = {
 
   getUserPosts: async (userId: number): Promise<Post[]> => {
     const res = await api.get(`/users/${userId}/posts`);
-    return res.data.data;
+    return res.data.data ;
   },
 };
