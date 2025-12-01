@@ -23,7 +23,7 @@ export const registerThunk = createAsyncThunk<
       );
     }
     return thunkAPI.rejectWithValue(
-      err instanceof Error ? err.message : "Register failed"
+      err instanceof Error ? err.message : "Register failed "
     );
   }
 });
