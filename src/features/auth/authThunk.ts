@@ -44,7 +44,7 @@ export const loginThunk = createAsyncThunk<
       );
     }
     return thunkAPI.rejectWithValue(
-      err instanceof Error ? err.message : "Login failed"
+      err instanceof Error ? err.message : "Login failed "
     );
   }
 });
